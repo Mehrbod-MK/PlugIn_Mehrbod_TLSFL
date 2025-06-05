@@ -1,0 +1,8 @@
+In the name of God.
+
+This is the core plugin of The Lost Secret of Egypt II:  Fenrir's Legacy functions.
+
+To install this plugin:
+1) Launch NG_Center program.
+2) Navigate to [Plugin] panels.
+3) Click on [Install New Plugin] button and choose the zip file or the folder where all files of this plugin have been saved.
