@@ -377,6 +377,20 @@ int cbFlipEffectMine(WORD FlipIndex, WORD Timer, WORD Extra, WORD ActivationMode
 		Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize();
 		break;
 
+		// 101: Puzzle. Moving Plaques. Start moving downwards for (&) plaque.
+	case 101:
+	{
+		MovingPlaque* plaqueNow = &MyData.Save.Global.MovingPlaques[Timer];
+		switch (plaqueNow->State)
+		{
+		case MovingPlaqueStates::None:
+			plaqueNow->TimerValue = Mehrbod::TLSFL::Level_Constants::LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer;
+			plaqueNow->State = MovingPlaqueStates::MovingDown;
+			break;
+		}
+		break;
+	}
+
 	case -1: 
 		break;
 	default:
@@ -703,7 +717,7 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize()
 	for (int i = 0; i < numPlaques; i++)
 	{
 		MovingPlaque* plauqeNow = &MyData.Save.Global.MovingPlaques[i];
-		plauqeNow->state = MovingPlaqueStates::None;
+		plauqeNow->State = MovingPlaqueStates::None;
 		switch (i)
 		{
 		case 0:
@@ -711,9 +725,12 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize()
 			plauqeNow->ClockwiseCogs[1] = 1077;
 			plauqeNow->CounterClockwiseCogs[0] = 1009;
 			plauqeNow->CounterClockwiseCogs[1] = 1078;
+			plauqeNow->PlaqueMoveableIndices[0] = 1007;
+			plauqeNow->PlaqueMoveableIndices[1] = 1054;
 			break;
 		}
 		plauqeNow->MoveValue = 0;
+		plauqeNow->ProgressStep = 0;
 	}
 }
 
@@ -725,18 +742,71 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 		MovingPlaque* plauqeNow = &MyData.Save.Global.MovingPlaques[i];
 		int numClockwiseCogs = sizeof(plauqeNow->ClockwiseCogs) / sizeof(plauqeNow->ClockwiseCogs[0]);
 		int numCounterClockwiseCogs = sizeof(plauqeNow->CounterClockwiseCogs) / sizeof(plauqeNow->CounterClockwiseCogs[0]);
-		switch (plauqeNow->state)
+		int numPlaques = sizeof(plauqeNow->PlaqueMoveableIndices) / sizeof(plauqeNow->PlaqueMoveableIndices[0]);
+		switch (plauqeNow->State)
 		{
 		case MovingPlaqueStates::None:
 			break;
 		case MovingPlaqueStates::MovingDown:
 			if (plauqeNow->TimerValue > 0)
 			{
-				
+				for (int j = 0; j < numClockwiseCogs; j++)
+				{
+					if (Get(enumGET.ITEM, plauqeNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
+					{
+						GET.pItem->OrientationT += Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue;
+						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				for (int j = 0; j < numCounterClockwiseCogs; j++)
+				{
+					if (Get(enumGET.ITEM, plauqeNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
+					{
+						GET.pItem->OrientationT -= Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue;
+						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				for (int j = 0; j < numPlaques; j++)
+				{
+					if (Get(enumGET.ITEM, plauqeNow->PlaqueMoveableIndices[j] | NGLE_INDEX, NULL))
+					{
+						GET.pItem->CordY -= 3;
+						Helpers::PlaySFXAtPosition(306, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				plauqeNow->ProgressStep++;
 				plauqeNow->TimerValue--;
+			}
+			else
+			{
+				for (int j = 0; j < numClockwiseCogs; j++)
+				{
+					if (Get(enumGET.ITEM, plauqeNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
+					{
+						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				for (int j = 0; j < numCounterClockwiseCogs; j++)
+				{
+					if (Get(enumGET.ITEM, plauqeNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
+					{
+						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
 			}
 			break;
 		}
 	}
+}
+
+void Mehrbod::TLSFL::Helpers::PlaySFXAtPosition(int sfxId, StrTriplePoint position)
+{
+	SoundEffect(sfxId, &position, NULL);
+}
+
+void Mehrbod::TLSFL::Helpers::PlaySFXAtPosition(int sfxId, DWORD cordX, int cordY, DWORD cordZ)
+{
+	StrTriplePoint triplePoint{ cordX, cordY, cordZ };
+	PlaySFXAtPosition(sfxId, triplePoint);
 }
 

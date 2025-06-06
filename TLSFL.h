@@ -43,12 +43,20 @@ namespace Mehrbod
 		private:
 		};
 
+		class Helpers
+		{
+		public:
+			static void PlaySFXAtPosition(int, StrTriplePoint);
+			static void PlaySFXAtPosition(int, DWORD, int, DWORD);
+		};
+
 		class Level_Constants
 		{
 		public:
 			static const int LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer = 30 * 4;
 			static const int LEVEL1_Puzzle2_MovingPlaques_MaxMoveValue = 1024 * 5;
 			static const int LEVEL1_Puzzle2_MovingPlaques_MaxCogs = 5;
+			static const int LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue = 200;
 		};
 	}
 }

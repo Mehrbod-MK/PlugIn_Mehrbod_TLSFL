@@ -16,12 +16,13 @@ typedef enum MovingPlaqueStates
 
 typedef struct MovingPlaque
 {
-	WORD state;
-	int ClockwiseCogs[7];
-	int CounterClockwiseCogs[7];
-	int PlaqueMoveableIndex;
+	WORD State;
+	int ClockwiseCogs[2];
+	int CounterClockwiseCogs[2];
+	int PlaqueMoveableIndices[2];
 	int MoveValue;
 	int TimerValue;
+	int ProgressStep;
 } MovingPlaque;
 
 // --------------- PRESET STRUCTURE ZONE -----------------------------
