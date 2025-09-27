@@ -23,6 +23,7 @@ typedef struct MovingPlaque
 	int MoveValue;
 	int TimerValue;
 	int ProgressStep;
+	int LaraDeathRoomIndex;
 } MovingPlaque;
 
 // --------------- PRESET STRUCTURE ZONE -----------------------------

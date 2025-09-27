@@ -384,8 +384,12 @@ int cbFlipEffectMine(WORD FlipIndex, WORD Timer, WORD Extra, WORD ActivationMode
 		switch (plaqueNow->State)
 		{
 		case MovingPlaqueStates::None:
+		case MovingPlaqueStates::WaitingForNextTrigger:
 			plaqueNow->TimerValue = Mehrbod::TLSFL::Level_Constants::LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer;
 			plaqueNow->State = MovingPlaqueStates::MovingDown;
+			break;
+		case MovingPlaqueStates::MovingDown:
+			plaqueNow->TimerValue = Mehrbod::TLSFL::Level_Constants::LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer;
 			break;
 		}
 		break;
@@ -604,6 +608,16 @@ void cbInitObjects(void)
 
 }
 
+char msg[100] = {'\0'};
+int cbLaraDraw(WORD CBT_Flags, StrItemTr4* pLara, bool TestNoUpdateLight, bool TestMirror)
+{
+	RECT rect = { 50, 50 };
+	ConvertMicroUnits(&rect);
+	PrintText(rect.left, rect.top, msg, 0, enumFC.WHITE, enumFTS.ALIGN_LEFT);
+
+	return enumSRET.OK;
+}
+
 
 // FOR_YOU:
 // in this function RequireMyCallBacks() you'll type
@@ -631,6 +645,7 @@ bool RequireMyCallBacks(void)
 	GET_CALLBACK(CB_CYCLE_BEGIN, 0, 0, cbCycleBegin);
 	GET_CALLBACK(CB_PROGR_ACTION_MINE, 0, 0, cbProgrActionMine);
 	GET_CALLBACK(CB_INIT_OBJECTS, 0, 0, cbInitObjects);
+	GET_CALLBACK(CB_LARA_DRAW, CBT_FIRST, 0, cbLaraDraw)
 
 
 	return true;
@@ -727,6 +742,7 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize()
 			plauqeNow->CounterClockwiseCogs[1] = 1078;
 			plauqeNow->PlaqueMoveableIndices[0] = 1007;
 			plauqeNow->PlaqueMoveableIndices[1] = 1054;
+			plauqeNow->LaraDeathRoomIndex = 101;
 			break;
 		}
 		plauqeNow->MoveValue = 0;
@@ -739,20 +755,21 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 	int numPlaques = sizeof(MyData.Save.Global.MovingPlaques) / sizeof(MyData.Save.Global.MovingPlaques[0]);
 	for (int i = 0; i < numPlaques; i++)
 	{
-		MovingPlaque* plauqeNow = &MyData.Save.Global.MovingPlaques[i];
-		int numClockwiseCogs = sizeof(plauqeNow->ClockwiseCogs) / sizeof(plauqeNow->ClockwiseCogs[0]);
-		int numCounterClockwiseCogs = sizeof(plauqeNow->CounterClockwiseCogs) / sizeof(plauqeNow->CounterClockwiseCogs[0]);
-		int numPlaques = sizeof(plauqeNow->PlaqueMoveableIndices) / sizeof(plauqeNow->PlaqueMoveableIndices[0]);
-		switch (plauqeNow->State)
+		MovingPlaque* plaqueNow = &MyData.Save.Global.MovingPlaques[i];
+		int numClockwiseCogs = sizeof(plaqueNow->ClockwiseCogs) / sizeof(plaqueNow->ClockwiseCogs[0]);
+		int numCounterClockwiseCogs = sizeof(plaqueNow->CounterClockwiseCogs) / sizeof(plaqueNow->CounterClockwiseCogs[0]);
+		int numPlaques = sizeof(plaqueNow->PlaqueMoveableIndices) / sizeof(plaqueNow->PlaqueMoveableIndices[0]);
+		switch (plaqueNow->State)
 		{
 		case MovingPlaqueStates::None:
 			break;
 		case MovingPlaqueStates::MovingDown:
-			if (plauqeNow->TimerValue > 0)
+			sprintf(msg, "Plaque Index:  %d", plaqueNow->PlaqueMoveableIndices[1]);
+			if (plaqueNow->TimerValue > 0 && plaqueNow->ProgressStep < 680)
 			{
 				for (int j = 0; j < numClockwiseCogs; j++)
 				{
-					if (Get(enumGET.ITEM, plauqeNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
+					if (Get(enumGET.ITEM, plaqueNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
 					{
 						GET.pItem->OrientationT += Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue;
 						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
@@ -760,7 +777,7 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 				}
 				for (int j = 0; j < numCounterClockwiseCogs; j++)
 				{
-					if (Get(enumGET.ITEM, plauqeNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
+					if (Get(enumGET.ITEM, plaqueNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
 					{
 						GET.pItem->OrientationT -= Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue;
 						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
@@ -768,30 +785,93 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 				}
 				for (int j = 0; j < numPlaques; j++)
 				{
-					if (Get(enumGET.ITEM, plauqeNow->PlaqueMoveableIndices[j] | NGLE_INDEX, NULL))
+					if (Get(enumGET.ITEM, plaqueNow->PlaqueMoveableIndices[j] | NGLE_INDEX, NULL))
 					{
 						GET.pItem->CordY -= 3;
 						Helpers::PlaySFXAtPosition(306, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
 					}
 				}
-				plauqeNow->ProgressStep++;
-				plauqeNow->TimerValue--;
+				plaqueNow->ProgressStep++;
+				plaqueNow->TimerValue--;
 			}
 			else
 			{
+				plaqueNow->State = MovingPlaqueStates::WaitingForNextTrigger;
+				plaqueNow->TimerValue = Level_Constants::LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer;
+			}
+			break;
+		
+		case MovingPlaqueStates::WaitingForNextTrigger:
+			if (plaqueNow->TimerValue > 0)
+			{
+				if (plaqueNow->TimerValue % 30 == 0)
+				{
+					for (int j = 0; j < numClockwiseCogs; j++)
+					{
+						if (Get(enumGET.ITEM, plaqueNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
+						{
+							Helpers::PlaySFXAtPosition(307, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+						}
+					}
+					for (int j = 0; j < numCounterClockwiseCogs; j++)
+					{
+						if (Get(enumGET.ITEM, plaqueNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
+						{
+							Helpers::PlaySFXAtPosition(307, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+						}
+					}
+				}
+				plaqueNow->TimerValue--;
+			}
+			else
+			{
+				plaqueNow->State = MovingPlaqueStates::MovingUp;
+			}
+			break;
+
+		case MovingPlaqueStates::MovingUp:
+			if (plaqueNow->ProgressStep > 0)
+			{
 				for (int j = 0; j < numClockwiseCogs; j++)
 				{
-					if (Get(enumGET.ITEM, plauqeNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
+					if (Get(enumGET.ITEM, plaqueNow->ClockwiseCogs[j] | NGLE_INDEX, NULL))
 					{
+						GET.pItem->OrientationT -= Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue * 2;
 						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
 					}
 				}
 				for (int j = 0; j < numCounterClockwiseCogs; j++)
 				{
-					if (Get(enumGET.ITEM, plauqeNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
+					if (Get(enumGET.ITEM, plaqueNow->CounterClockwiseCogs[j] | NGLE_INDEX, NULL))
 					{
+						GET.pItem->OrientationT += Level_Constants::LEVEL1_Puzzle2_MovingPlaques_CogsRotationAddValue * 2;
 						Helpers::PlaySFXAtPosition(40, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
 					}
+				}
+				for (int j = 0; j < numPlaques; j++)
+				{
+					if (Get(enumGET.ITEM, plaqueNow->PlaqueMoveableIndices[j] | NGLE_INDEX, NULL))
+					{
+						GET.pItem->CordY += 3 * 2;
+						Helpers::PlaySFXAtPosition(308, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				plaqueNow->ProgressStep -= 2;
+			}
+			else
+			{
+				for (int j = 0; j < numPlaques; j++)
+				{
+					if (Get(enumGET.ITEM, plaqueNow->PlaqueMoveableIndices[j] | NGLE_INDEX, NULL))
+					{
+						Helpers::PlaySFXAtPosition(309, GET.pItem->CordX, GET.pItem->CordY, GET.pItem->CordZ);
+					}
+				}
+				plaqueNow->State = MovingPlaqueStates::None;
+				plaqueNow->ProgressStep = 0;
+				if (Helpers::IsLaraInRoomNumber(plaqueNow->LaraDeathRoomIndex))
+				{
+					PerformFlipeffect(NULL, 63, 0, 0);
 				}
 			}
 			break;
@@ -808,5 +888,11 @@ void Mehrbod::TLSFL::Helpers::PlaySFXAtPosition(int sfxId, DWORD cordX, int cord
 {
 	StrTriplePoint triplePoint{ cordX, cordY, cordZ };
 	PlaySFXAtPosition(sfxId, triplePoint);
+}
+
+bool Mehrbod::TLSFL::Helpers::IsLaraInRoomNumber(int roomIndex)
+{
+	Get(enumGET.LARA, NULL, NULL);
+	return GET.pLara->Room == roomIndex;
 }
 
