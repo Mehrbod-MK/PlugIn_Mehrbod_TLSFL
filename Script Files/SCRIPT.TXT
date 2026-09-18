@@ -1,0 +1,1311 @@
+;**************************************
+;
+; Tomb Raider IV Script File
+; Release Version 1.00
+;
+;**************************************
+
+;--------------------------------------
+; Platform Definitions
+;--------------------------------------
+
+[PSXExtensions]
+Level=	.PSX
+Cut=	.CUT
+FMV=	.FMV
+
+[PCExtensions]
+Level=	.MMK
+Cut=	.MMK
+FMV=	.BIK
+
+;--------------------------------------
+; Language Filenames
+;--------------------------------------
+
+[Language]
+File=	0,ENGLISH.TXT
+File=	1,FRENCH.TXT
+File=	2,GERMAN.TXT
+File=	3,ITALIAN.TXT
+File=	4,SPANISH.TXT
+
+;--------------------------------------
+; Options
+;--------------------------------------
+
+[Options]
+Plugin=	2, Plugin_Mehrbod_TLSFL, IGNORE
+Plugin=	1, Plugin_FLEP, IGNORE
+LoadSave=	ENABLED
+Title=		ENABLED
+PlayAnyLevel=	DISABLED
+InputTimeout=	18000		; frames * seconds = 60x30
+FlyCheat=	DISABLED
+Security=	$55
+DemoDisc=	DISABLED
+
+; Diagnostics.
+Diagnostic=  DISABLED
+;DiagnosticType=  DGX_SFX_SOUNDS+DGX_AUDIO_TRACKS+DGX_ERRORS+DGX_CHEATS, IGNORE
+;DiagnosticType=  DGX_CHEATS+DGX_ERRORS+DGX_SFX_SOUNDS, IGNORE
+
+; CRS (Release version)
+CRS=  Enabled
+
+; Encryption key.
+Settings=  SET_CRYPT_SCRIPT + SET_DISABLE_CHEATS + SET_BLIND_SAVEGAMES
+CryptPersonalKey=  $7AFE867
+
+; Embedded Audio Files.
+ImportFile=  1, audio\Embedded\Egyptian_Choirs_A.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  2, audio\Embedded\Egyptian_Choirs_B.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  3, audio\Embedded\Egyptian_Choirs_C.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  4, audio\Embedded\Egyptian_Choirs_D.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  5, audio\Embedded\Egyptian_Choirs_E.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  6, audio\Embedded\Egyptian_Choirs_F.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  7, audio\Embedded\Egyptian_Choirs_G.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  8, audio\Embedded\Egyptian_Choirs_H.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  9, audio\Embedded\Egyptian_Choirs_I.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  10, audio\Embedded\Egyptian_Choirs_J.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  11, audio\Embedded\Egyptian_Choirs_K.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  12, audio\Embedded\Egyptian_Choirs_L.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  13, audio\Embedded\Egyptian_Choirs_M.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  14, audio\Embedded\Egyptian_Choirs_N.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  15, audio\Embedded\Egyptian_Choirs_O.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  16, audio\Embedded\Egyptian_Choirs_P.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  17, audio\Embedded\Clunk_Clunk_FiveSec.wav, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  18, audio\Embedded\Water_NotFilled.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  19, audio\Embedded\Water_Fill_A.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  20, audio\Embedded\SoundCue_Crocs_Dead.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  21, audio\Embedded\Egypt_Revealer_W.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  22, audio\Embedded\Water_Drain_A.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  23, audio\Embedded\Enemy_Encounter_A.ogg, FTYPE_SOUND, IMPORT_MEMORY
+;ImportFile=  24, audio\Embedded\Enemy_Encounter_B.ogg, FTYPE_SOUND, IMPORT_MEMORY
+;ImportFile=  25, audio\Embedded\Enemy_Encounter_C.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  26, audio\Embedded\Enemy_Encounter_D.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  27, audio\Embedded\Enemy_Encounter_E.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  28, audio\Embedded\Enemy_Encounter_F.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  29, audio\Embedded\Enemy_Encounter_G.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  30, audio\Embedded\Enemy_Encounter_H.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  31, audio\Embedded\Enemy_Encounter_H.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  32, audio\Embedded\Found_PuzzlePiece_A.ogg, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  33, audio\Embedded\Mechanism_A.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  34, audio\Embedded\vc_lar_this_is.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  35, audio\Embedded\vc_lar_these_scales.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  36, audio\Embedded\vc_lar_tread.mp3, FTYPE_SOUND, IMPORT_MEMORY
+
+ImportFile=  37, audio\Embedded\vc_lar_made_it.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  38, audio\Embedded\vc_lar_cunning.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  39, audio\Embedded\vc_lar_correct_switches.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  40, audio\Embedded\cut_lar_wolf.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  41, audio\Embedded\cut_seth_intro_A.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  42, audio\Embedded\cut_seth_intro_B.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  43, audio\Embedded\cut_seth_intro_C.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  44, audio\Embedded\cut_seth_intro_D.mp3, FTYPE_SOUND, IMPORT_MEMORY
+
+ImportFile=  45, audio\Embedded\SoundCue_Picked_Ankh.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  46, audio\Embedded\SoundCue_Placed_Ankh.mp3, FTYPE_SOUND, IMPORT_MEMORY
+
+ImportFile=  47, audio\Embedded\cut_seth_im_free.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  48, audio\Embedded\cut_lar_no_so_fast.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  49, audio\Embedded\cut_seth_junk.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  50, audio\Embedded\cut_seth_juice.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  51, audio\Embedded\cut_seth_threaten.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  52, audio\Embedded\cut_lar_no_never.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  53, audio\Embedded\cut_seth_futile.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  54, audio\Embedded\cut_seth_futile.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  55, audio\Embedded\cut_seth_advice.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  56, audio\Embedded\cut_lar_damnt.mp3, FTYPE_SOUND, IMPORT_MEMORY
+ImportFile=  57, audio\Embedded\cut_lar_unbalancing.mp3, FTYPE_SOUND, IMPORT_MEMORY
+
+ImportFile=  58, audio\Embedded\vc_lar_underworld.mp3, FTYPE_SOUND, IMPORT_MEMORY
+
+; Show Lara in title level.
+ShowLaraInTitle= ENABLED
+
+;--------------------------------------
+; Title
+;--------------------------------------
+
+[Title]
+
+; Customization - Flare.
+Customize=  CUST_FLARE, FFL_ADD_SPARKS, 30, 255, 173, 173, 17
+
+; Customization - Load screen
+Image=  1, 1, IF_CRYPTIC + IF_FULL_SCREEN, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Customize=  CUST_BACKGROUND, BKGDT_LOADING_LEVEL, BKGDF_HIDE_LOADING_BAR + BKGDF_MINIMAL_LOADING_TIME, 4, 1
+
+WindowTitle=  The Lost Secret II - Fenrir's Legacy (v 0.1.0.0) 
+
+LoadCamera=	84246,-533,78233,81622,-1514,78208,40	;src x,y,z target x,y,z, room
+Level=		DATA\TITLE,104
+
+;--------------------------------------
+; Levels
+;--------------------------------------
+
+[Level]
+Name=		Fenris & Seth Encounters
+Horizon=   ENABLED
+ColAddHorizon=  ENABLED
+LoadCamera=  0, 0, 0, 0, 0, 0, 0
+Fog=  0, 102, 102
+FogRange=  1, 40
+LevelFarView=  42
+ForceVolumetricFX= DISABLED
+
+Cutscene=  ENABLED
+
+Customize=  CUST_TEXT_ON_FLY_SCREEN, ENABLED
+
+; Reset resources when jumping to LEVEL 2.
+ResetHUB=  2
+
+WindowTitle=  The Lost Secret II - Fenrir's Legacy (v 0.1.0.0)
+
+; **************************************** CUTSCENE 1 - THE REVIVAL OF SETH'S TROOPS **************************************** ;
+
+; CUTSCENE - PHASE 1 Organizer.
+Organizer=  1, FO_TICK_TIME, IGNORE, 1, 1, 1, 2, 150, 4, 23, 5, 30, 6, 265, 11, 45, 9, 440, 10, 260, 12, 240, 18, 400, 19, 85, 37, 370, 39, 120, >
+							40, 60, 41, 50, 42, 40, 43, 30, 44, 20, 45, >
+							10, 46, 1130, 51, 2000, 55, 30, 56
+
+; CUTSCENE - PHASE 1 Texts organizer.
+Organizer=  2, FO_TICK_TIME, IGNORE, 1, 7, 120, 3, 30, 8, 120, 3, 30, 13, 120, 3, 30, 14, 120, 3, 30, 15, 120, 3, 720, 16, 165, 17, 330, 38, 660, 47, 510, 48, 390, 49, 225 + 60, 50, 495 + 180, 52, 525, 53, 465, 54
+
+; Print Legend/Subtitle TEXTs.
+Parameters=  PARAM_PRINT_TEXT, 1, CL_GOLD, FT_CENTER_CENTER + FT_SIZE_HALF_CHAR, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_PRINT_TEXT, 2, CL_RED, FT_CENTER_CENTER + FT_SIZE_HALF_CHAR, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_PRINT_TEXT, 3, CL_WHITE, FT_CENTER_CENTER + FT_SIZE_HALF_CHAR, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Set CINEMA SCREEN BARS, initialize SETH animations and set CUT-CAM, also start TEXTs organizer.
+TriggerGroup=  1, 	$2000, 369, $4, >
+				$5000, 70, $2B, $5000, 70, $1332, $5000, 70, $1232, $5000, 70, $F32, $5000, 70, $E32, $5000, 70, $B32, $5000, 70, $A32, $5000, 70, $C0F, >
+				$025000, 72, $64, $025000, 70, $65, >
+				$2000, 127, $2
+
+; Legends.
+TriggerGroup=  7, $2000, 203, $10A
+TriggerGroup=  8, $2000, 203, $10B
+TriggerGroup=  13, $2000, 203, $10C
+TriggerGroup=  14, $2000, 203, $10D
+TriggerGroup=  15, $2000, 203, $30E
+
+; Subtitles.
+TriggerGroup=  16, $2000, 132, $129, > 	; START PLAYING CUTSCENE AUDIO (A).
+				$022000, 102, $F, $022000, 103, $3, $022000, 104, 165
+TriggerGroup=  17, $022000, 102, $10, $022000, 103, $3, $022000, 104, 360
+TriggerGroup=  38, $2000, 132, $12A, > 	; START PLAYING CUTSCENE AUDIO (B).
+				$022000, 102, $11, $022000, 103, $3, $022000, 104, 630
+TriggerGroup=  47, $2000, 132, $12B, > 	; START PLAYING CUTSCENE AUDIO (C).
+				$022000, 102, $12, $022000, 103, $3, $022000, 104, 510
+TriggerGroup=  48, $022000, 102, $13, $022000, 103, $3, $022000, 104, 390
+TriggerGroup=  49, $022000, 102, $14, $022000, 103, $3, $022000, 104, 225
+TriggerGroup=  50, $022000, 102, $15, $022000, 103, $3, $022000, 104, 495
+TriggerGroup=  52, $2000, 130, $1, $2000, 132, $12C, > 	; START PLAYING CUTSCENE AUDIO (D).
+				$022000, 102, $16, $022000, 103, $3, $022000, 104, 525
+TriggerGroup=  53, $022000, 102, $17, $022000, 103, $3, $022000, 104, 465
+TriggerGroup=  54, $022000, 102, $18, $022000, 103, $3, $022000, 104, 270
+
+; Move CAMERA to the right.
+Parameters=  PARAM_MOVE_ITEM, 1, IGNORE, 72, DIR_WEST, 4096, 16, IGNORE, IGNORE, IGNORE
+TriggerGroup=  2, $2000, 167, $1
+
+; ERASE ALL TEXT.
+TriggerGroup=  3, $2000, 67, $0
+
+; Start SETH walking animation and movement (with slight delay from Organizer).
+Parameters=  PARAM_MOVE_ITEM, 2, IGNORE, 70, DIR_NORTH, 20480, 20, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 3, IGNORE, 104, DIR_NORTH, 20480, 20, IGNORE, IGNORE, IGNORE
+TriggerGroup=  4, $5000, 70, $150F
+TriggerGroup=  5, $2000, 167, $2, $2000, 167, $3
+
+; Shoot CAMERA to SETH's foot and track focus slightly, alsmo move CAMERA TARGETS along with SETH.
+Parameters=  PARAM_MOVE_ITEM, 4, IGNORE, 103, DIR_NORTH, 20480, 10, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 5, IGNORE, 107, DIR_NORTH, 20480, 20, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 6, IGNORE, 108, DIR_NORTH, 20480, 20, IGNORE, IGNORE, IGNORE
+TriggerGroup=  6, $2000, 167, $4, $2000, 167, $5, $2000, 167, $6, $025000, 103, $64, $025000, 104, $65
+
+; Shatter skeleton when SETH kicks it.
+TriggerGroup=  11, $5000, 83, $40E
+
+; Shoot CAMERA in front of SETH's face and move it slightly to the left.
+Parameters=  PARAM_MOVE_ITEM, 7, IGNORE, 107, DIR_EAST, 1024, 2, IGNORE, IGNORE, IGNORE
+TriggerGroup=  9, $025000, 107, $64, $025000, 108, $65, $2000, 167, $7
+
+; Start moving SETH upwards the HILL and SHOOT camera and slightly move camera upwards.
+Parameters=  PARAM_MOVE_ITEM, 8, IGNORE, 70, DIR_UP, 2100, 8, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 9, IGNORE, 111, DIR_UP, 1024, 4, IGNORE, IGNORE, IGNORE
+TriggerGroup=  10, $2000, 167, $8, $2000, 167, $9, $025000, 111, $64, $025000, 114, $65
+
+; Focus on a random dead skeleton/dog (to distract player view from Seth's changes) and move Seth to its right position (by removing the first one and activating the clone).
+Parameters=  PARAM_MOVE_ITEM, 10, IGNORE, 115, DIR_SOUTH, 2048, 8, IGNORE, IGNORE, IGNORE
+TriggerGroup=  12, $025000, 115, $64, $025000, 102, $65, >
+				$5000, 70, $10E, >
+				$5000, 116, $2B, $5000, 116, $1332, $5000, 116, $1232, $5000, 116, $F32, $5000, 116, $E32, $5000, 116, $B32, $5000, 116, $A32, $5000, 116, $C0F, >
+				$2000, 167, 10
+
+; Lightnings.
+ColorRGB=  1, 0, 255, 255
+Parameters=  PARAM_LIGHTNING, 1, LGTN_PLAY_SOUND, 117, 78, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 2, LGTN_PLAY_SOUND, 117, 79, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 3, LGTN_PLAY_SOUND, 117, 80, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 4, LGTN_PLAY_SOUND, 117, 81, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 5, LGTN_PLAY_SOUND, 117, 82, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 6, LGTN_PLAY_SOUND, 117, 83, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 7, LGTN_PLAY_SOUND, 117, 84, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 8, LGTN_PLAY_SOUND, 117, 85, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 9, LGTN_PLAY_SOUND, 117, 86, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 10, LGTN_PLAY_SOUND, 117, 96, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 11, LGTN_PLAY_SOUND, 117, 97, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 12, LGTN_PLAY_SOUND, 117, 98, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 13, LGTN_PLAY_SOUND, 117, 99, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 14, LGTN_PLAY_SOUND, 117, 100, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 15, LGTN_PLAY_SOUND, 117, 101, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 16, LGTN_PLAY_SOUND, 117, 102, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Lightnings TriggerGroups.
+TriggerGroup=  20, $2000, 359, $701
+TriggerGroup=  21, $2000, 359, $702
+TriggerGroup=  22, $2000, 359, $703
+TriggerGroup=  23, $2000, 359, $704
+TriggerGroup=  24, $2000, 359, $705
+TriggerGroup=  25, $2000, 359, $707
+TriggerGroup=  26, $2000, 359, $707
+TriggerGroup=  27, $2000, 359, $708
+TriggerGroup=  28, $2000, 359, $709
+TriggerGroup=  29, $2000, 359, $70A
+TriggerGroup=  30, $2000, 359, $70B
+TriggerGroup=  31, $2000, 359, $70C
+TriggerGroup=  32, $2000, 359, $70D
+TriggerGroup=  33, $2000, 359, $70E
+TriggerGroup=  34, $2000, 359, $70F
+TriggerGroup=  35, $2000, 359, $710
+
+; Shoot camera below Seth's feet and move to right slightly.
+Parameters=  PARAM_MOVE_ITEM, 11, IGNORE, 118, DIR_EAST, 4096, 3, IGNORE, IGNORE, IGNORE
+TriggerGroup=  18, $2000, 167, 11, $025000, 118, $64, $025000, 119, $65
+
+; Shoot camera near SETH, move upwards slightly, and play Seth's shooting bolts animation.
+Parameters=  PARAM_MOVE_ITEM, 12, IGNORE, 121, DIR_UP, 1024, 4, IGNORE, IGNORE, IGNORE
+TriggerGroup=  19, $2000, 167, 12, $025000, 121, $64, $025000, 119, $65, >
+				$5000, 116, $50F
+
+; View SETH's dead army, start shooting bolts in random way.
+Organizer=  3, FO_TICK_TIME + FO_LOOP, IGNORE, 3, 36
+TriggerGroup=  36, $2000, 289, $1
+Switch=  1, IGNORE, SWT_RANDOM_MODE, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35
+Parameters=  PARAM_MOVE_ITEM, 13, IGNORE, 122, DIR_WEST, 4096, 4, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 14, IGNORE, 122, DIR_UP, 4096, 1, IGNORE, IGNORE, IGNORE
+TriggerGroup=  37, $025000, 122, $64, $025000, 123, $65, >
+				$2000, 127, $3, > ; $2000, 129, $10F, >
+				$2000, 167, 13, $2000, 167, 14
+
+; Shoot CAMERA to a skeleton view, reviving it, and move slightly.
+Parameters=  PARAM_MOVE_ITEM, 15, IGNORE, 139, DIR_DOWN, 1024, 4, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 16, IGNORE, 139, DIR_WEST, 4096, 4, IGNORE, IGNORE, IGNORE
+TriggerGroup=  39,  $025000, 139, $64, $025000, 140, $65, > 
+				$5000, 79, $2B, >
+				$2000, 167, 15
+
+; Jump to desert view and start reviving everyone. Also stop lightning and play explosion effect.
+TriggerGroup=  40, $025000, 141, $64, $025000, 142, $65, >
+				$5000, 96, $2B, $5000, 97, $2B, $2000, 167, 16, >
+				$2000, 128, $3, > ;$2000, 130, $1, > 
+				$2000, 355, $A00, $2000, 11, $0
+TriggerGroup=  41, $5000, 78, $2B, $5000, 99, $2B, $5000, 100, $2B
+TriggerGroup=  42, $5000, 80, $2B, $5000, 81, $2B, $5000, 82, $2B
+TriggerGroup=  43, $5000, 83, $2B, $5000, 98, $2B, $5000, 102, $2B
+TriggerGroup=  44, $5000, 84, $2B, $5000, 85, $2B, $5000, 99, $2B, $5000, 100, $2B
+TriggerGroup=  45, $5000, 86, $2B, $5000, 101, $2B
+
+; Seth delivers his speech (Reset animation to IDLE).
+Parameters=  PARAM_MOVE_ITEM, 17, IGNORE, 143, DIR_WEST, 4096, 2, IGNORE, IGNORE, IGNORE
+TriggerGroup=  46, $025000, 143, $64, $025000, 123, $65, >
+				$2000, 167, 17, >
+				$5000, 116, $C0F
+
+; Shoot camera below Seth's feet when he threatens.
+Parameters=  PARAM_MOVE_ITEM, 18, IGNORE, 144, DIR_EAST, 4096, 1, IGNORE, IGNORE, IGNORE
+TriggerGroup=  51, $025000, 144, $64, $025000, 119, $65, >
+				$2000, 167, 18
+
+; OPEN CURTAIN, FADE OUT, ENABLE LARA CONTROL
+TriggerGroup=  55, $2000, 85, $10, $2000, 369, $0, $2000, 52, $0
+
+; END CUTSCENE MODE AND LOAD LEVEL 2
+TriggerGroup=  56, $022000, 105, $0, $2000, 82, $2
+
+; ******************************************************************************************************* ;
+
+Level=	DATA\FENSETH, 100
+
+[Level]
+Name=		Underneath Temple of Horus
+Horizon=	DISABLED
+WindowTitle=  The Lost Secret II - Fenrir's Legacy (v 0.1.0.0)
+
+; Puzzle Items
+Puzzle= 6, Cyan Gemstone, $0000,$0300,$0000,$0000,$0000,$0002 
+Puzzle= 10, Golden Ankh, $0050,$0300,$0000,$0000,$0000,$0002
+
+; Start of level actions triggergroup.
+TriggerGroup=  139, $2000+TGROUP_SINGLE_SHOT, 193, $2, $5000+TGROUP_SINGLE_SHOT, 1590, $2D, $2000+TGROUP_SINGLE_SHOT, 80, $C2
+
+; Start of level camera sequence (Delay for Lara's voice 'this is not good...').
+Organizer=  13, FO_TICK_TIME, IGNORE, 110, 138, 120, 149, 120, 150
+Parameters=  PARAM_PRINT_TEXT, 1, CL_WHITE, FT_BOTTOM_CENTER + FT_SIZE_HALF_CHAR, IGNORE, IGNORE, IGNORE, IGNORE
+TriggerGroup=  138, $2000+TGROUP_SINGLE_SHOT, 132, $122, $022000+TGROUP_SINGLE_SHOT, 102, 25, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 180
+TriggerGroup=  149, $2000+TGROUP_SINGLE_SHOT, 203, $12F
+TriggerGroup=  150, $2000+TGROUP_SINGLE_SHOT, 67, $0
+
+; Lara enters The Scales Puzzle room (These scales + audio).
+Organizer=  14, FO_TICK_TIME, IGNORE, 1, 140, 170, 141
+TriggerGroup=  142, $2000+TGROUP_SINGLE_SHOT, 127, $E
+TriggerGroup=  140, $2000+TGROUP_SINGLE_SHOT, 193, $5B, $2000+TGROUP_SINGLE_SHOT, 132, $123, $022000+TGROUP_SINGLE_SHOT, 102, 26, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 165
+TriggerGroup=  141, $022000+TGROUP_SINGLE_SHOT, 102, 27, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 210
+
+;************************** SCALES PUZZLE **************************;
+
+; ItemGroup:  Flame Emitter 2s.
+ItemGroup=  10, 231, 929, 1252
+
+; ItemGroup:  Doors (Except PUZZLE ROOM 3).
+ItemGroup=  11, 237, 927
+
+; Turn OFF all FLAME_EMITTER2s and DOORs.
+TriggerGroup=  1, $2000, 146, $A, $2000, 146, $B
+
+; Reset SCALES puzzle.
+TriggerGroup=  2, $2000, 371, $1, >  		; Untrigger ALL Items.
+			  $2000, 232, $40, >		; Set LOCAL BYTE ALFA 1 to 0.
+			  $5000, 96, $F, >		; Play RESET Animation.
+			  $2000, 70, $1F63, >		; Play SCALES2 SFX.
+			  $2000, 374, $2		; Enable GlobalTrigger 2.
+			  
+
+; TRIGGER FOR DOOR 1.
+TriggerGroup=  3, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND, 64, $2B, > 	; If the puzzle is already reset, then
+			  $5000, 231, $412B,  >	; Trigger flame emitter.
+			  $2000, 232, $140, >		; Set LOCAL BYTE ALFA 1 to 1.
+			  $2000, 127, $1		; Trigger timed CAMERA on SCALES.
+
+; TRIGGER FOR DOOR 2
+TriggerGroup=  72, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND, 64, $2B, > 	; If the puzzle is already reset, then
+			  $5000, 929, $412B,  >	; Trigger flame emitter.
+			  $2000, 232, $240, >		; Set LOCAL BYTE ALFA 1 to 2.
+			  $2000, 127, $1		; Trigger timed CAMERA on SCALES.
+
+; TRIGGER FOR DOOR 3
+TriggerGroup=  77, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND, 64, $2B, > 	; If the puzzle is already reset, then
+			  $5000, 1252, $412B,  >	; Trigger flame emitter.
+			  $2000, 232, $340, >		; Set LOCAL BYTE ALFA 1 to 3.
+			  $2000, 127, $1		; Trigger timed CAMERA on SCALES.
+
+; TRIGGER FOR DOOR 4
+TriggerGroup=  134, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND, 64, $2B, > 	; If the puzzle is already reset, then
+			  $5000, 1551, $412B,  >	; Trigger flame emitter.
+			  $2000, 232, $440, >		; Set LOCAL BYTE ALFA 1 to 4.
+			  $2000, 127, $1		; Trigger timed CAMERA on SCALES.
+
+; TRIGGER FOR DOOR 5
+TriggerGroup=  135, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND, 64, $2B, > 	; If the puzzle is already reset, then
+			  $5000, 1553, $412B,  >	; Trigger flame emitter.
+			  $2000, 232, $540, >		; Set LOCAL BYTE ALFA 1 to 5.
+			  $2000, 127, $1		; Trigger timed CAMERA on SCALES.
+
+;;;;;;;;;; SCALES (ANIMATING6) mechanism (re-implemented in TRNG). ;;;;;;;;;;
+
+; Enable checking for use of all WATERSKINs.
+TriggerGroup=  85, $2000, 374, $3, $2000, 374, $4, $2000, 374, $5, $2000, 374, $6, $2000, 374, $7, $2000, 374, $8, $2000, 374, $9, $2000, 374, $A, $2000, 374, $B
+
+; Disable checking for use of all WATERSKINs.
+TriggerGroup=  86, $2000, 375, $3, $2000, 375, $4, $2000, 375, $5, $2000, 375, $6, $2000, 375, $7, $2000, 375, $8, $2000, 375, $9, $2000, 375, $A, $2000, 374, $B
+
+; Selected WATERSKIN check.
+GlobalTrigger=  3, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN1_1, 80, 94, IGNORE
+GlobalTrigger=  4, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN1_2, 80, 95, IGNORE
+GlobalTrigger=  5, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN1_3, 80, 96, IGNORE
+GlobalTrigger=  6, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN2_1, 80, 97, IGNORE
+GlobalTrigger=  7, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN2_2, 80, 98, IGNORE
+GlobalTrigger=  8, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN2_3, 80, 99, IGNORE
+GlobalTrigger=  9, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN2_4, 80, 100, IGNORE
+GlobalTrigger=  10, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, WATERSKIN2_5, 80, 101, IGNORE
+
+; Selected AMULET OF HORUS object (at the end of chapter 1, after releasing Seth).
+GlobalTrigger=  11, FGT_DISABLED + FGT_REPLACE_MANAGEMENT, GT_SELECTED_INVENTORY_ITEM, QUEST_ITEM1, 80, 147, IGNORE
+TriggerGroup=  147, $5000, 1633, $2D, $2000, 193, $19, $2000, 124, $3F04, $2000, 355, $2802, $2000, 11, 0, $5000, 96, $40E
+
+; Lara's dialogue (Well, seems the path...)
+TriggerGroup=  148, $2000, 132, $13A, $022000, 102, 46, $022000, 103, $2, $022000, 104, 210
+
+; Check if SCALES is already not filled with water (playing animation 0 only) and Lara is not already filling scales (playing animation 402).
+TriggerGroup=  80, $9000+TGROUP_AND, 96, $15, $8000+TGROUP_AND+TGROUP_NOT, 402, $1E
+
+; Used WATERSKIN 1 - 1 litre.
+TriggerGroup=  94, $2000, 232, $148, $2000, 371, $5C	; Set Local Byte Alfa 3 = 1, then preform triggergroup 92.
+
+; Used WATERSKIN 1 - 2 litres.
+TriggerGroup=  95, $2000, 232, $248, $2000, 371, $5C	; Set Local Byte Alfa 3 = 2, then preform triggergroup 92.
+
+; Used WATERSKIN 1 - 3 litres.
+TriggerGroup=  96, $2000, 232, $348, $2000, 371, $5C	; Set Local Byte Alfa 3 = 2, then preform triggergroup 92.
+
+; Used WATERSKIN 2 - 1 litre.
+TriggerGroup=  97, $2000, 232, $148, $2000, 371, $66	; Set Local Byte Alfa 3 = 1, then preform triggergroup 102.
+
+; Used WATERSKIN 2 - 2 litres.
+TriggerGroup=  98, $2000, 232, $248, $2000, 371, $66	; Set Local Byte Alfa 3 = 2, then preform triggergroup 102.
+
+; Used WATERSKIN 2 - 3 litres.
+TriggerGroup=  99, $2000, 232, $348, $2000, 371, $66	; Set Local Byte Alfa 3 = 3, then preform triggergroup 102.
+
+; Used WATERSKIN 2 - 4 litres.
+TriggerGroup=  100, $2000, 232, $448, $2000, 371, $66	; Set Local Byte Alfa 3 = 4, then preform triggergroup 102.
+
+; Used WATERSKIN 2 - 5 litres.
+TriggerGroup=  101, $2000, 232, $548, $2000, 371, $66	; Set Local Byte Alfa 3 = 5, then preform triggergroup 102.
+
+; COMMON EVENT for using LARGE_WATERSKIN.
+TriggerGroup=  102, $2000, 371, $5A, $2000, 80, $92, >  ; Empty LARGE_WATERSKIN, Play Animation 402 for Lara, and enable Organizer 12.
+				$2000, 127, $C
+
+; COMMON EVENT for using SMALL_WATERSKIN.
+TriggerGroup=  92, $2000, 371, $5D, $2000, 80, $92, >  ; Empty LARGE_WATERSKIN, Play Animation 402 for Lara, and enable Organizer 12.
+				$2000, 127, $C
+
+; Empty LARGE_WATERSKIN.
+TriggerGroup=  90, $2000, 47, $57, $2000, 47, $58, $2000, 47, $59, $2000, 47, $5A, $2000, 47, $5B, $2000, 50, $156
+
+; Empty SMALL_WATERSKIN.
+TriggerGroup=  93, $2000, 47, $53, $2000, 47, $54, $2000, 47, $55, $2000, 50, $152
+
+; Lara Animation + Mesh + Scales management organizer.
+Organizer=  12, FO_TICK_TIME, IGNORE, 15, 88, 35, 91, 20, 108
+
+; Give Lara Waterskin mesh (Frame 15, Animation 402).
+TriggerGroup=  88, $2000, 100, $180D
+
+; Put back Waterskin into backpack (Frame 93, Animation 402) ! UNUSED ! - ENGINE WILL HANDLE IT.
+TriggerGroup=  89, $2000, 100, $80D
+
+; Play POUR SFX.
+TriggerGroup=  91, $2000, 70, $1F61
+
+; Check expected scales pour value (Local Byte Alfa 1) and used water volume (Local Byte Alfa 3).
+TriggerGroup=  108, $2000, 289, $A	; Perform Switch 10.
+Switch=  10, #0040, SWT_BASE_ZERO, 87, 103, 104, 105, 106, 107
+
+; Expected litres = 0.
+TriggerGroup=  87, $5000, 96, $30F
+
+; Expected litre is 1.
+TriggerGroup=  103, $8000+TGROUP_AND, 72, $12A, $5000, 96, $30F, >					; If water is less than expected, play SCALES animation 3.
+				$8000+TGROUP_ELSE+TGROUP_AND, 72, $12B, $5000, 96, $10F, >			; Otherwise, if water equals expected, play SCALES animation 1.
+				$5000+TGROUP_ELSE, 96, $20F								; Otherwise, play animation 2.
+
+; Expected litres is 2.
+TriggerGroup=  104, $8000+TGROUP_AND, 72, $22A, $5000, 96, $30F, >					; If water is less than expected, play SCALES animation 3.
+				$8000+TGROUP_ELSE+TGROUP_AND, 72, $22B, $5000, 96, $10F, >			; Otherwise, if water equals expected, play SCALES animation 1.
+				$5000+TGROUP_ELSE, 96, $20F								; Otherwise, play animation 2.
+
+; Expected litres is 3.
+TriggerGroup=  105, $8000+TGROUP_AND, 72, $32A, $5000, 96, $30F, >					; If water is less than expected, play SCALES animation 3.
+				$8000+TGROUP_ELSE+TGROUP_AND, 72, $32B, $5000, 96, $10F, >			; Otherwise, if water equals expected, play SCALES animation 1.
+				$5000+TGROUP_ELSE, 96, $20F								; Otherwise, play animation 2.
+
+; Expected litres is 4.
+TriggerGroup=  106, $8000+TGROUP_AND, 72, $42A, $5000, 96, $30F, >					; If water is less than expected, play SCALES animation 3.
+				$8000+TGROUP_ELSE+TGROUP_AND, 72, $42B, $5000, 96, $10F, >			; Otherwise, if water equals expected, play SCALES animation 1.
+				$5000+TGROUP_ELSE, 96, $20F								; Otherwise, play animation 2.
+
+; Expected litres is 5.
+TriggerGroup=  107, $8000+TGROUP_AND, 72, $52A, $5000, 96, $30F, >					; If water is less than expected, play SCALES animation 3.
+				$8000+TGROUP_ELSE+TGROUP_AND, 72, $52B, $5000, 96, $10F, >			; Otherwise, if water equals expected, play SCALES animation 1.
+				$5000+TGROUP_ELSE, 96, $20F								; Otherwise, play animation 2.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Check if SCALES is being activated/used.
+GlobalTrigger=  2, IGNORE, GT_ALWAYS, IGNORE, 82, 83, IGNORE
+TriggerGroup=  82, $9000+TGROUP_OR, 96, $115, $9000+TGROUP_OR, 96, $215, $9000+TGROUP_OR, 96, $315  ; Check if SCALES is playing Animation 1, 2 or 3.
+TriggerGroup=  83, $2000, 375, $2, $2000, 127, $B  ; Disable GT 2 and execute Organizer 11 (delayed triggering for doors).
+
+; Decide which door to open based on SCALES status.
+Organizer=  11, FO_TICK_TIME, IGNORE, 50, 84
+TriggerGroup=  84, $2000, 289, $1
+Switch=  1, #0040, SWT_BASE_ZERO, 79, 4, 71, 78, 136, 137, 79
+
+; Open DOOR:  Puzzle 1 - WATER HALL AND TRIGGER TRIGGERER (Otherwise, open the door to Sphinx room).
+TriggerGroup=  4, $9000+TGROUP_AND, 96, $115, $5000, 237, $11A, $5000, 209, $2B, $2000+TGROUP_ELSE, 371, $4F
+
+; Open DOOR:  Puzzle 2 - EXPANDING BRIDGE HALL AND TRIGGER TRIGGERER (Otherwise, open the door to Sphinx room).
+TriggerGroup=  71, $9000+TGROUP_AND, 96, $115, $5000, 927, $11A, $2000+TGROUP_ELSE, 371, $4F
+
+; Open DOOR:  Puzzle 3 - DEBRIS ROOM FOR PARTIAL LEVEL FOR SECRET - 4 + RESET SCALES PUZZLE IMMEDIATELY AFTER. (Otherwise, open the door to Sphinx room).
+TriggerGroup=  78, $9000+TGROUP_AND, 96, $115, $5000, 1261, $11A, >
+				$2000, 371, $2, $5000, 1256, $2C, $2000+TGROUP_ELSE, 371, $4F
+
+; Open DOOR:  HUB - 1 to Temple of Horus + RESET SCALES PUZZLE (Otherwise, open the door to Sphinx room).
+TriggerGroup=  136, $9000+TGROUP_AND, 96, $115, $5000, 1532, $11A, >
+				$2000, 371, $2, $5000, 1554, $2C, $5000, 1551, $2C, $2000+TGROUP_ELSE, 371, $4F
+
+; Open DOOR:  HUB - 2 to Temple of Horus + RESET SCALES PUZZLE (Otherwise, open the door to Sphinx room).
+TriggerGroup=  137, $9000+TGROUP_AND, 96, $115, $5000, 1539, $11A, >
+				$2000, 371, $2, $5000, 1555, $2C, $5000, 1553, $2C, $2000+TGROUP_ELSE, 371, $4F
+
+; WRONG LITRES OF WATER: TRIGGER SPHINX TRAP ROOM DOOR + TRIGGER TRIGGERER (Also make a backup of Local Byte Alfa 1 to CurrentValue and set Local Byte Alfa 1 = 6).
+TriggerGroup=  79, $5000, 1408, $11A, $5000, 1417, $2B, $2000, 271, $40, $2000, 232, $640
+
+; If Sphinx (Bull) hits one of the bird symbols, then open the entrance door to trap room + TRIGGER TRIGGER for untriggering everything.
+TriggerGroup=  81, $5000, 1408, $2B, $5000, 1438, $2B, $2000, 374, $2, $2000, 272, $40, >		; Open entrance door, trigger triggerer, restore Local Byte Alfa 1 from CurrentValue and enable GT 2.
+				$5000, 96, $F, $2000, 355, $1401, >								; Also, play SCALES RESET animation and flash screen orange,
+				$5000, 1425, $2C, $5000, 1426, $2C, $5000, 1461, $2C, $5000, 1462, $2C	; Also, disable heavy TRIGGER TRIGGERERS for sphinx.
+
+; Trigger timed camera on SCALES.
+Organizer=  1, FO_TICK_TIME, IGNORE, 20, 5
+TriggerGroup=  5, $5000, 96, $2A, $5000, 240, $329
+
+; Trigger spooky sound cue + Lara dialogue (I need to tread).
+TriggerGroup=  70, $2000+TGROUP_SINGLE_SHOT, 193, $7, $2000+TGROUP_SINGLE_SHOT, 132, $124, $022000+TGROUP_SINGLE_SHOT, 102, 28, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 160
+
+; Lara dialogue (Phew, made it.)
+TriggerGroup=  143, $2000+TGROUP_SINGLE_SHOT, 132, $125, $022000+TGROUP_SINGLE_SHOT, 102, 29, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 120
+
+;*******************************************************************;
+
+; Object Code Bits Numbers
+
+Parameters=  PARAM_BIG_NUMBERS, >
+			100, >				; For PUSHABLE_OBJECT used for picking up LARGE_WATERSKIN.
+			1, >					; For SCALES - 1 Litre.
+			6, >					; For SCALES Reset.
+			2, >					; For SCALES - 2 litres.
+			3					; For SCALES - 3 litres.
+
+;************************ ENEMYIES + THEIR DEATH SOUND CUES *******************;
+; PUZZLE 1 - WATER LEVEL 0 - Double Crocodiles.
+TriggerGroup= 34, $2000+TGROUP_SINGLE_SHOT, 127, $3, $2000+TGROUP_SINGLE_SHOT, 129, $4, $5000+TGROUP_SINGLE_SHOT, 439, $2B, $5000+TGROUP_SINGLE_SHOT, 440, $2B
+Organizer=  3, FO_TICK_TIME, IGNORE, 1, 31, 600, 32
+GlobalTrigger= 1, FGT_DISABLED, GT_CONDITION_GROUP, IGNORE, 30, 33, IGNORE
+TriggerGroup=  30, $9000+TGROUP_AND, 439, $E, $9000+TGROUP_AND, 440, $E  	; Check if enemies are DEAD.
+TriggerGroup=  31, $2000+TGROUP_SINGLE_SHOT, 109, $101								; Enable GlobalTrigger.
+TriggerGroup=  32, $2000+TGROUP_SINGLE_SHOT, 109, $100								; Disable GlobalTrigger.
+TriggerGroup=  33, $2000+TGROUP_SINGLE_SHOT, 130, $1, $2000+TGROUP_SINGLE_SHOT, 132, $114		; Play sound cue.
+;*******************************************************************;
+
+; Choirs Sound Effect.
+Switch=  2, IGNORE, SWT_RANDOM_MODE, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
+TriggerGroup=  6, $2000, 132, $101
+TriggerGroup=  7, $2000, 132, $102
+TriggerGroup=  8, $2000, 132, $103
+TriggerGroup=  9, $2000, 132, $104
+TriggerGroup=  10, $2000, 132, $105
+TriggerGroup=  11, $2000, 132, $106
+TriggerGroup=  12, $2000, 132, $107
+TriggerGroup=  13, $2000, 132, $108
+TriggerGroup=  14, $2000, 132, $109
+TriggerGroup=  15, $2000, 132, $10A
+TriggerGroup=  16, $2000, 132, $10B
+TriggerGroup=  17, $2000, 132, $10C
+TriggerGroup=  18, $2000, 132, $10D
+TriggerGroup=  19, $2000, 132, $10E
+TriggerGroup=  20, $2000, 132, $10F
+TriggerGroup=  21, $2000, 132, $110
+
+UVRotate=  27
+
+;************************** PUZZLE ROOM 1 - WATER **************************;
+
+; Save WATER LEVEL visibility.
+Organizer=  5, FO_TICK_TIME+FO_LOOP, 1, 1, 41
+TriggerGroup=  41, $2000, 289, $5, $2000, 371, $4B	; Perform Switch 5 and TriggerGroup 75.
+Switch=  5, #0042, SWT_BASE_ZERO, 42, 42, 43, 44
+TriggerGroup=  42, $5000, 14, $33, $5000, 717, $32, $5000, 718, $32
+TriggerGroup=  43, $5000, 14, $32, $5000, 717, $33, $5000, 718, $32
+TriggerGroup=  44, $5000, 14, $32, $5000, 717, $32, $5000, 718, $33
+
+; If the puzzle has already been finished, consider water level to MAXIMUM (Perform TriggerGroup 44)
+TriggerGroup= 75, $8000+TGROUP_AND, 65, $72C, $2000, 371, $2C
+
+; Initialize WATER room. (Water level below 1, Local Byte Alfa 2 = 0)
+TriggerGroup=  22, $2000+TGROUP_SINGLE_SHOT, 232, $41, $2000+TGROUP_SINGLE_SHOT, 167, $1, >
+				$2000+TGROUP_SINGLE_SHOT, 145, $1, $2000+TGROUP_SINGLE_SHOT, 145, $2, $2000+TGROUP_SINGLE_SHOT, 145, $3, $2000+TGROUP_SINGLE_SHOT, 145, $4, $2000+TGROUP_SINGLE_SHOT, 145, $7, >
+				$2000+TGROUP_SINGLE_SHOT, 127, $5
+
+; Play Egypt Revealer - Water Sound Cue.
+TriggerGroup=  35, $2000+TGROUP_SINGLE_SHOT, 132, $115
+
+; Initially move WATER LEVEL 1 to a little bit lower than floor.
+Parameters=  PARAM_MOVE_ITEM, 1, FMOV_IGNORE_FLOOR_COLLISION, 14, DIR_DOWN, 1024, 1024, IGNORE, IGNORE, IGNORE
+
+; ItemGroup:  LEVEL 1 - Mists.
+ItemGroup=  1, 352, 353, 354, 355, 356, 357, 358, 359
+
+; ItemGroup:  LEVEL 1 - Waterfalls.
+ItemGroup=  2, 347, 345, 346, 360, 361, 362, 363, 364
+
+; ItemGroup:  LEVEL 1 - Emitters.
+ItemGroup=  3, 463, 464, 482, 483
+
+; ItemGroup:  LEVEL 2 - Emitters.
+ItemGroup=  4, 367, 368, 492, 493, 499, 500, 532, 533
+
+; ItemGroup:  LEVEL 2 - Mists.
+ItemGroup=  5, 551, 552, 553, 554, 555, 556, 557
+
+; ItemGroup:  LEVEL 2 - Waterfalls.
+ItemGroup=  6, 550, 549, 558, 559, 560, 561, 562
+
+; ItemGroup:  LEVEL 2 - Doors to LEVEL 3 Rooms.
+ItemGroup=  7, 650, 653
+
+; ItemGroup:  LEVEL 3 - Waterfalls.
+ItemGroup=  8, 778, 789, 780, 781, 783, 784, 785, 786, 787
+
+; ItemGroup:  LEVEL 3 - Mists.
+ItemGroup=  9, 788, 789, 790, 791, 792, 793, 794, 795, 796
+
+; Add one to water level value (LBA2).
+TriggerGroup=  24, $2000, 231, $141
+
+; Switch-case for checking water level 1 FILL.
+Switch=  3, #0041, SWT_BASE_ZERO, 25, 26, 26, 26
+
+; Switch-case for checking water level 2 FILL.
+Switch=  6, #0041, SWT_BASE_ZERO, 25, 25, 49, 49
+
+; Switch-case for checking water level 3 FILL.
+Switch=  8, #0041, SWT_BASE_ZERO, 25, 25, 25, 59
+
+; Switch-case for checking water level 1 DRAIN.
+
+Switch=  4, #0042, SWT_BASE_ZERO, IGNORE, 40, IGNORE, IGNORE
+
+; Switch-case for checking water level 2 DRAIN.
+Switch=  7, #0042, SWT_BASE_ZERO, IGNORE, IGNORE, 57, IGNORE
+
+; Switch-case for checking water level 3 DRAIN.
+Switch=  9, #0042, SWT_BASE_ZERO, IGNORE, IGNORE, IGNORE, 69
+
+; Insufficient drainages blocked.
+TriggerGroup=  25, $2000, 132, $112
+
+; START PROCESS Fill Water Level = 1 (1 drainage blocked). (LBA3 += 1)
+TriggerGroup=  26, $8000+TGROUP_AND, 66, $12A, $2000, 231, $142, $2000, 127, $2
+
+; START PROCESS Drain Water Level = 1. (LBA3 -= 1)
+TriggerGroup=  40, $2000, 233, $142, $2000, 127, $4
+
+; START PROCESS Fill Water Level = 2 (2 drainages blocked). (LBA3 += 1)
+TriggerGroup=  49, $8000+TGROUP_AND, 66, $12B, $2000, 231, $142, $2000, 127, $6
+
+; START PROCESS Drain Water Level = 2.
+TriggerGroup=  57, $2000, 127, $7
+
+; START PROCESS Drain Water Level = 3.
+TriggerGroup=  69, $2000, 127, $9
+
+; START PROCESS Fill Water Level = 3 (3 drainages blocked). (LBA3 += 1)
+TriggerGroup=  59, $8000+TGROUP_AND, 66, $22B, $2000, 231, $142, $2000, 127, $8
+
+; WATER LEVEL 0 to 1.
+Organizer=  2, FO_TICK_TIME, IGNORE, 10, 23, 35, 27, 12, 28, 152, 29
+TriggerGroup=  23, $5000, 404, $2D, $2000, 132, $113, $2000, 167, $2  ; Move WATER, play WATER FILL sound.
+TriggerGroup=  27, $2000, 146, $1 ; Untrigger LEVEL 1 Mists.
+TriggerGroup=  28, $2000, 146, $2 ; Untrigger LEVEL 1 Waterfalls.
+TriggerGroup=  29, $2000, 124, $3E00, $2000, 146, $3, $2000, 145, $5, $2000, 145, $6 ; Activate FLIPMAP (For WATER) and disable LEVEL 1 EMITTERs And enable LEVEL 2 Effects.
+
+; WATER LEVEL 1 to 0.
+Organizer=  4, FO_TICK_TIME, IGNORE, 10, 36, 130, 37, 12, 38, 60, 39
+TriggerGroup=  36, $5000, 404, $2D, $2000, 132, $116, $2000, 167, $3, $2000, 126, $0, $2000, 146, $5, $2000, 146, $6  ; Move WATER, play WATER DRAIN sound, deactivate FLIPMAP, and untrigger upper level WATERFALLs and EMITTERs
+TriggerGroup=  37, $2000, 145, $1 ; Enable LEVEL 1 Mists.
+TriggerGroup=  38, $2000, 145, $2 ; Enable LEVEL 1 Waterfalls.
+TriggerGroup=  39, $2000, 145, $3 ; Enable LEVEL 1 EMITTERs.
+
+; WATER LEVEL 1 to 2.
+Organizer=  6, FO_TICK_TIME, IGNORE, 10, 45, 10, 46, 10, 47, 67, 48, 85, 50
+TriggerGroup=  45, $5000, 735, $2D, $2000, 132, $113, $2000, 167, $4  ; Move WATER, play WATER FILL sound.
+TriggerGroup=  46, $2000, 146, $5 ; Untrigger LEVEL 2 Mists.
+TriggerGroup=  47, $2000, 146, $6 ; Untrigger LEVEL 2 Waterfalls.
+TriggerGroup=  48, $2000, 146, $4 ; Untrigger LEVEL 2 EMITTERs.
+TriggerGroup=  50, $2000, 124, $3E01, $2000, 145, $8, $2000, 145, $9 ; Activate FLIPMAP (For WATER) and and enable LEVEL 3 Effects
+
+; WATER LEVEL 2 to 1.
+Organizer=  7, FO_TICK_TIME, IGNORE, 10, 53, 130, 54, 12, 55, 60, 56
+TriggerGroup=  53, $5000, 735, $2D, $2000, 132, $116, $2000, 167, $5, $2000, 126, $1, $2000, 146, $8, $2000, 146, $9  ; Move WATER, play WATER DRAIN sound, deactivate FLIPMAP, and untrigger upper level WATERFALLs and EMITTERs
+TriggerGroup=  54, $2000, 145, $4 ; Enable LEVEL 1 Mists.
+TriggerGroup=  55, $2000, 145, $5 ; Enable LEVEL 1 Waterfalls.
+TriggerGroup=  56, $2000, 233, $142, $2000, 145, $6 ; Enable LEVEL 1 EMITTERs AND LBA3 -= 1.
+
+; WATER LEVEL 2 to 3.
+Organizer=  8, FO_TICK_TIME, IGNORE, 10, 60, 10, 61, 10, 62, 67, 63, 25, 64
+TriggerGroup=  60, $5000, 601, $2D, $2000, 132, $113, $2000, 167, $6  ; Move WATER, play WATER FILL sound.
+TriggerGroup=  61, $2000, 146, $9 ; Untrigger LEVEL 3 Mists.
+TriggerGroup=  62, $2000, 146, $8 ; Untrigger LEVEL 3 Waterfalls.
+TriggerGroup=  63, $2000, 146, $7 ; Untrigger LEVEL 3 DOORs.
+TriggerGroup=  64, $2000, 124, $3E02 ; Activate FLIPMAP (For WATER).
+
+Organizer=  9, FO_TICK_TIME, IGNORE, 10, 65, 130, 66, 12, 67, 60, 68
+TriggerGroup=  65, $5000, 601, $2D, $2000, 132, $116, $2000, 167, $7, $2000, 126, $2  ; Move WATER, play WATER DRAIN sound, deactivate FLIPMA.
+TriggerGroup=  66, $2000, 145, $9 ; Enable LEVEL 2 Mists.
+TriggerGroup=  67, $2000, 145, $8 ; Enable LEVEL 2 Waterfalls.
+TriggerGroup=  68, $2000, 233, $142, $2000, 145, $7 ; Enable LEVEL 2 DOORs AND LBA3 -= 1.
+
+; Increase WATER Level 0 to 1.
+Parameters=  PARAM_MOVE_ITEM, 2, FMOV_IGNORE_FLOOR_COLLISION, 14, DIR_UP, 4080, 20, 79, IGNORE, IGNORE
+
+; Decrease WATER Level 1 to 0.
+Parameters=  PARAM_MOVE_ITEM, 3, FMOV_IGNORE_FLOOR_COLLISION, 14, DIR_DOWN, 4080, 20, 79, IGNORE, IGNORE
+
+; Increase WATER Level 1 to 2.
+Parameters=  PARAM_MOVE_ITEM, 4, FMOV_IGNORE_FLOOR_COLLISION, 717, DIR_UP, 3056, 16, 79, IGNORE, IGNORE
+
+; Decrease WATER Level 2 to 1.
+Parameters=  PARAM_MOVE_ITEM, 5, FMOV_IGNORE_FLOOR_COLLISION, 717, DIR_DOWN, 3056, 16, 79, IGNORE, IGNORE
+
+; Increase WATER Level 2 to 3.
+Parameters=  PARAM_MOVE_ITEM, 6, FMOV_IGNORE_FLOOR_COLLISION, 718, DIR_UP, 3088, 16, 79, IGNORE, IGNORE
+
+; Decrease WATER Level 3 to 2.
+Parameters=  PARAM_MOVE_ITEM, 7, FMOV_IGNORE_FLOOR_COLLISION, 718, DIR_DOWN, 3088, 16, 79, IGNORE, IGNORE
+
+; Sound Cue - First dog in SWITCH ROOM Level 3.
+TriggerGroup=  51, $2000+TGROUP_SINGLE_SHOT, 132, $11E
+
+; Sound Cue - Second dog in SWITCH ROOM Level 3.
+TriggerGroup=  52, $2000+TGROUP_SINGLE_SHOT, 132, $11A
+
+; Check final trapdoor (LBA4).
+TriggerGroup=  58, $2000, 231, $143, $8000+TGROUP_AND, 67, $22B, $5000, 836, $11A
+
+;***************************************************************************;
+
+;************************** PUZZLE ROOM 2 - ELECTRIC LIGHTNINGS **************************;
+
+; Lightning Color (Harmful).
+ColorRGB=  1, 0, 255, 255
+
+; Lightning Color (Harmless).
+ColorRGB=  2, 255, 255, 0
+
+; Lightnings for platforms (Harmful).
+Parameters=  PARAM_LIGHTNING, 1, LGTN_PLAY_SOUND, 1038, 1039, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 2, LGTN_PLAY_SOUND, 1040, 1041, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 3, LGTN_PLAY_SOUND, 1042, 1043, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 4, LGTN_PLAY_SOUND, 1044, 1045, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 5, LGTN_PLAY_SOUND, 1050, 1051, 1, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Lightnings for platforms (Harmless).
+Parameters=  PARAM_LIGHTNING, 6, LGTN_PLAY_SOUND, 1038, 1039, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 7, LGTN_PLAY_SOUND, 1040, 1041, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 8, LGTN_PLAY_SOUND, 1042, 1043, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 9, LGTN_PLAY_SOUND, 1044, 1045, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_LIGHTNING, 10, LGTN_PLAY_SOUND, 1050, 1051, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Lightning for wrong switch use (Kills Lara).
+Parameters=  PARAM_LIGHTNING, 11, LGTN_PLAY_SOUND + LGTN_FIRE_LARA + LGTN_FLASH_SCREEN + LGTN_KILL_TARGET, IGNORE, 0, 2, IGNORE, 197, IGNORE, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Initialize lightnings from harmful floor to the floating cubic platforms, and activate death TRIGGER_TRIGGERERs.
+TriggerGroup=  73, $2000, 359, $1, $2000, 359, $2, $2000, 359, $3, $2000, 359, $4, $2000, 359, $5, >
+				$5000, 1058, $2B, $5000, 1059, $2B, $5000, 1060, $2B, $5000, 1061, $2B, $5000, 1062, $2B
+
+; Disable lightning for first platform, and bright up other platforms as clue to the puzzle (FLIPMAP 3).
+TriggerGroup=  74, $2000, 362, $1, $2000, 359, $6, $5000, 1058, $2C, $2000, 124, $3F03
+
+; Kill Lara for wrong switches.
+TriggerGroup=  76, $2000, 359, $3C0B, $2000, 11, $0
+
+; Disable all lightnings (when leaving puzzle room).
+TriggerGroup=  109, $2000, 362, $1, $2000, 362, $2, $2000, 362, $3, $2000, 362, $4, $2000, 362, $5, >
+				$2000, 362, $6, $2000, 362, $7, $2000, 362, $8, $2000, 362, $9, $2000, 362, $A
+
+; Lara dialogue (Cunning...)
+TriggerGroup=  144, $2000+TGROUP_SINGLE_SHOT, 132, $126, $022000+TGROUP_SINGLE_SHOT, 102, 30, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 270
+
+; Lara dialogue (I don't have any room...)
+TriggerGroup=  145, $2000+TGROUP_SINGLE_SHOT, 132, $127, $022000+TGROUP_SINGLE_SHOT, 102, 31, $022000+TGROUP_SINGLE_SHOT, 103, $2, $022000+TGROUP_SINGLE_SHOT, 104, 250
+
+;***************************************************************************;
+
+;//////////////////// CUTSCENE 1 - WOLF STATUE INSPECTION IN TOMB BENEATH ////////////////////
+
+; If Lara holds torch item on fire, trigger cutscene.
+TriggerGroup=  111, $8000+TGROUP_AND, 9, $23, $2000+TGROUP_SINGLE_SHOT, 371, $85
+TriggerGroup=  133, $2000+TGROUP_SINGLE_SHOT, 127, $A
+
+; Cutscene organizer.
+Organizer=  10, FO_TICK_TIME, IGNORE, 1, 110, 40, 112, 2, 113, 5, 114, 50, 115, 1, 116, 100, 117, 30, 118, 31, 119, 180, 122, 60, 120, 60, 121, 30, 123, 80, 124, 1, 125, 5, 126, 250, 127, 230, 128, 120, 129, 180, 130, 210, 131, 60, 132
+
+; Disable LARA control and FADE out screen.
+TriggerGroup=  110, $2000, 51, $0, $2000, 85, $10
+
+; Move LARA to designated LARA_START_POS.
+TriggerGroup=  112, $2000, 79, $1
+
+; FADE IN screen and initialize cut-cam, also start play cutscene audio.
+TriggerGroup=  113, $2000, 369, $4, $2000, 84, $16, $025000, 1496, $64, $025000, 1497, $65, $2000, 167, $A, $2000, 132, $128
+
+; Seq - 1:  Move CAMERA left.
+Parameters=  PARAM_MOVE_ITEM, 10, IGNORE, 1496, DIR_NORTH, 1024, 8, IGNORE, IGNORE, IGNORE
+
+; Make LARA face look at the amulet (ANIMATION 445).
+TriggerGroup=  114, $2000, 80, $BD
+
+; STOP MOVING CAMERA.
+TriggerGroup=  115, $5000, 1496, $2F
+
+; Seq - 2:  Look at the AMULET high above.
+TriggerGroup=  116, $025000, 1500, $64, $025000, 1498, $65, $2000, 167, $B, $2000, 167, $C
+
+; Seq - 2:  Move CAMERA a little upwards, and move target (AMULET) slightly to the right.
+Parameters=  PARAM_MOVE_ITEM, 11, IGNORE, 1500, DIR_UP, 100, 1, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 12, IGNORE, 1498, DIR_WEST, 100, 1, IGNORE, IGNORE, IGNORE
+
+; Seq - 3:  Get back to Lara and make her jump into the pit (almost...).
+TriggerGroup=  117, $2000, 80, $BE, $025000, 1496, $64, $025000, 1497, $65
+
+; Seq - 4:  Shoot camera to the silver wolf statue, and move Lara into the depression.
+TriggerGroup=  118, $025000, 1504, $64, $025000, 1503, $65, $2000, 167, $D, $2000, 79, $2
+
+; Seq - 4:  Pan camera back.
+Parameters=  PARAM_MOVE_ITEM, 13, IGNORE, 1504, DIR_WEST, 2048, 2, IGNORE, IGNORE, IGNORE
+
+; Seq - 4:  Make Lara walk forward, toward the statues.
+TriggerGroup=  119, $2000, 80, $BF
+
+; Seq - 5:  Move LARA to final block square of depression and shoot camera to Lara's face.
+TriggerGroup=  120, $2000, 79, $3, $2000, 167, $E, $2000, 167, $F, $2000, 167, $10, $2000, 80, $C0, $025000, 1506, $64, $025000, 1507, $65
+
+; Seq - 5:  Move source camera slightly towards Lara's face in a frame.
+Parameters=  PARAM_MOVE_ITEM, 14, IGNORE, 1506, DIR_SOUTH, 512, 512, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 15, IGNORE, 1506, DIR_WEST, 600, 600, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 16, IGNORE, 1507, DIR_WEST, 512, 512, IGNORE, IGNORE, IGNORE
+
+; Seq - 5:  Move target from Lara's face to the wolf statue.
+TriggerGroup=  121, $2000, 167, $11, $2000, 167, $12
+Parameters=  PARAM_MOVE_ITEM, 17, IGNORE, 1507, DIR_WEST, 1030, 10, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 18, IGNORE, 1507, DIR_UP, 512, 5, IGNORE, IGNORE, IGNORE
+
+; Seq - 5:  Print LARA subtitle (Incredible...)
+TriggerGroup=  122, $022000, 102, $3, $022000, 103, $2, $022000, 104, $5A
+
+; Seq - 5:  Print LARA subtitle (This wolf statue...)
+TriggerGroup=  123, $022000, 102, $4, $022000, 103, $2, $022000, 104, 90
+
+; Seq - 6:  Jump to the left upper of the wolf statue.
+TriggerGroup=  124, $025000, 1494, $64
+
+; Seq	 - 7:  Move CAMERA to the right a little, targetting wolf statue.
+TriggerGroup=  125, $2000, 167, $13
+Parameters=  PARAM_MOVE_ITEM, 19, IGNORE, 1494, DIR_NORTH, 2048, 4, IGNORE, IGNORE, IGNORE
+
+; Seq - 7:  Display LARA subtitle (Silver wolves had nothing to do with the Egyptian mythology...).
+TriggerGroup=  126, $022000, 102, $5, $022000, 103, $2, $022000, 104, 240
+
+; Seq - 7:  Shoot camera to lion statue's face and Display LARA subtitle (And these creatures...).
+TriggerGroup=  127, $2000, 167, $14, $2000, 167, $15, $025000, 1509, $64, $025000, 1510, $65, $022000, 102, $6, $022000, 103, $2, $022000, 104, 240
+Parameters=  PARAM_MOVE_ITEM, 20, IGNORE, 1509, DIR_WEST, 300, 300, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 21, IGNORE, 1509, DIR_NORTH, 1024, 4, IGNORE, IGNORE, IGNORE
+
+; Seq - 8:  Turn Lara's face towards the Amulet of Horus symbol on ground (Anim 449) + Camera + Subtitles (And eventually, the amulet of horus).
+TriggerGroup=  128, $2000, 80, $C1, $2000, 79, $4, $025000, 1513, $64, $025000, 1512, $65, $022000, 102, $7, $022000, 103, $2, $022000, 104, 120, $2000, 167, $16, $2000, 167, $17
+Parameters=  PARAM_MOVE_ITEM, 22, IGNORE, 1513, DIR_DOWN, 4096, 2, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 23, IGNORE, 1512, DIR_WEST, 1024, 4, IGNORE, IGNORE, IGNORE
+
+; Seq - 8:  Display LARA subtitle (I'm almost certain...).
+TriggerGroup=  129, $022000, 102, $8, $022000, 103, $2, $022000, 104, 150
+
+; Seq - 8:  Display LARA subtitle (Could it be that...).
+TriggerGroup=  130, $022000, 102, $9, $022000, 103, $2, $022000, 104, 200
+
+; FADE OUT Screen.
+TriggerGroup=  131, $2000, 85, $10
+
+; Enable LARA Control, open curtain, restore animation and Lara-cam, also remove all unncessary FLAME_EMITTER2s.
+TriggerGroup=  132, $022000, 105, $0, $2000, 84, $16, $2000, 52, $0, $2000, 77, $B, $2000, 369, $0, $2000, 371, 146
+
+; Remove all FLAME_EMITTER2s.
+TriggerGroup=  146, $5000, 1497, $10E, $5000, 1496, $10E, $5000, 1500, $10E, $5000, 1504, $10E, $5000, 1512, $10E, $5000, 1498, $10E, $5000, 1513, $10E, $5000, 1494, $10E, $5000, 1509, $10E, $5000, 1506, $10E, $5000, 1507, $10E, $5000, 1503, $10E
+
+;/////////////////////////////////////////////////////////////////////////////////////////////
+
+; ResetHUB to level 4.
+ResetHUB=  4
+
+LoadCamera=	0, 0, 0, 0, 0, 0, 0
+Level=	DATA\CRYPT, 107
+
+[Level]
+Name=		Temple of Horus
+Horizon=	DISABLED
+WindowTitle=  The Lost Secret II - Fenrir's Legacy (v 0.1.0.0)
+
+; UV Rotate for waterfalls.
+UVRotate=  17
+
+; Puzzle Items
+Puzzle= 10, Golden Ankh, $0050,$0300,$0000,$0000,$0000,$0002 
+
+; Items to trigger in the main temple.
+ItemGroup=  5, 756, 757, 125, 121, 118, 112, 111, 1029, 1058, 4, 1064, 23, 1028, 1027, > 
+			95, 94, 89
+
+;;;;;;;;;;;;;;;;; JOBY SPIKES ROOM PUZZLE (GOLDEN ANKH 2) ;;;;;;;;;;;;;;;;;
+
+; Joby spikes item-group.
+ItemGroup=  1, 484, 486, 487, 488, 489, 490, 491, 492, 493, 494, 496, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512
+
+; Teeth-spikes item-group.
+ItemGroup=  2, 425, 440, 443, 454, 457
+
+; Initialize puzzle room by closing the entrance door, setting organizer timer for spikes and activating ceiling joby spikes. Also, set Local Byte Alfa 1 = 0.
+TriggerGroup=  1, $2000+TGROUP_SINGLE_SHOT, 371, 2
+TriggerGroup=  2, $2000, 145, $1, $5000, 422, $1A, $2000, 127, 1, $2000, 129, $11, $2000, 232, $40
+
+; Shatter static objects and enable teeth spikes organizer.
+Organizer=  1, IGNORE, IGNORE, 60, 3
+
+; Enable teeth spikes.
+TriggerGroup=  3, $2000, 145, 2
+
+; Untrigger all joby spikes.
+TriggerGroup=  4, $2000, 146, 1
+
+; Pulley 1.
+TriggerGroup=  5, $8000+TGROUP_AND, 64, $2B, $2000, 231, $140, $5000+TGROUP_ELSE, 425, $2B
+
+; Pulley 2.
+TriggerGroup=  6, $8000+TGROUP_AND, 64, $12B, $2000, 231, $140, $5000+TGROUP_ELSE, 443, $2B
+
+; Pulley 3.
+TriggerGroup=  7, $8000+TGROUP_AND, 64, $22B, $2000, 231, $140, $5000+TGROUP_ELSE, 454, $2B
+
+; Pulley 4.
+TriggerGroup=  8, $8000+TGROUP_AND, 64, $32B, $2000, 231, $140, $5000+TGROUP_ELSE, 440, $2B
+
+; Golden ankh pikup (5th step).
+TriggerGroup=  9, $8000+TGROUP_AND, 64, $42B, $5000, 462, $2B, $2000, 132, $12D, $5000+TGROUP_ELSE, 457, $2B
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;; FLAMES AND CRUMBLING FLOORS (GOLDEN ANKH 3) ;;;;;;;;;;;;;;;;;
+
+; Flame EMITTERS Item-group (must move to west).
+ItemGroup=  3, 793, 796, 798
+
+; Flame EMITTERS Item-group (must move to east).
+ItemGroup=  4, 794, 795, 797
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;; TRIPLE GOLDEN ANKHS PUZZLE ;;;;;;;;;;;;;;;;;
+
+; Golden Ankh 1 (FlipMap 0).
+TriggerGroup=  10, $2000+TGROUP_SINGLE_SHOT, 11, $0, $2000+TGROUP_SINGLE_SHOT, 355, $1408, > 															; On-screen effects.
+				$2000+TGROUP_SINGLE_SHOT, 124, $3E00, >																				; Flipmap.
+				$2000+TGROUP_SINGLE_SHOT, 231, $100, >  																				; Increment Global Byte Alfa 1 variable.
+				$5000+TGROUP_SINGLE_SHOT, 155, $2B, $5000+TGROUP_SINGLE_SHOT, 329, $2B, $5000+TGROUP_SINGLE_SHOT, 896, $2B, >							; Amber lights.				
+				$8000+TGROUP_AND+TGROUP_SINGLE_SHOT, 0, $32B, $2000+TGROUP_SINGLE_SHOT, 371, 13, $2000+TGROUP_ELSE+TGROUP_SINGLE_SHOT, 132, $12E, >			; Trigger final camera sequence if all 3 ankhs have been placed, otherwise play sound track.
+				$5000+TGROUP_SINGLE_SHOT, 154, $2A, $5000+TGROUP_SINGLE_SHOT, 956, $529														; Set HORUS_STATUE as CAMERA_TARGET and shoot camera (if Global byte alfa 1 < 3)
+
+; Golden Ankh 2 (FlipMap 1).
+TriggerGroup=  11, $2000+TGROUP_SINGLE_SHOT, 11, $0, $2000+TGROUP_SINGLE_SHOT, 355, $1408, > 															; On-screen effects.
+				$2000+TGROUP_SINGLE_SHOT, 124, $3E01, >																				; Flipmap.
+				$2000+TGROUP_SINGLE_SHOT, 231, $100, >  																				; Increment Global Byte Alfa 1 variable.
+				$5000+TGROUP_SINGLE_SHOT, 934, $2B, $5000+TGROUP_SINGLE_SHOT, 367, $2B, $5000+TGROUP_SINGLE_SHOT, 957, $2B, >							; Amber lights.				
+				$8000+TGROUP_AND+TGROUP_SINGLE_SHOT, 0, $32B, $2000+TGROUP_SINGLE_SHOT, 371, 13, $2000+TGROUP_ELSE+TGROUP_SINGLE_SHOT, 132, $12E, >			; Trigger final camera sequence if all 3 ankhs have been placed, otherwise play sound track.
+				$5000+TGROUP_SINGLE_SHOT, 226, $2A, $5000+TGROUP_SINGLE_SHOT, 971, $529														; Set HORUS_STATUE as CAMERA_TARGET and shoot camera (if Global byte alfa 1 < 3)
+
+; Golden Ankh 3 (FlipMap 2).
+TriggerGroup=  12, $2000+TGROUP_SINGLE_SHOT, 11, $0, $2000+TGROUP_SINGLE_SHOT, 355, $1408, > 															; On-screen effects.
+				$2000+TGROUP_SINGLE_SHOT, 124, $3E02, >																				; Flipmap.
+				$2000+TGROUP_SINGLE_SHOT, 231, $100, >  																				; Increment Global Byte Alfa 1 variable.
+				$5000+TGROUP_SINGLE_SHOT, 936, $2B, $5000+TGROUP_SINGLE_SHOT, 392, $2B, $5000+TGROUP_SINGLE_SHOT, 962, $2B, >							; Amber lights.				
+				$8000+TGROUP_AND+TGROUP_SINGLE_SHOT, 0, $32B, $2000+TGROUP_SINGLE_SHOT, 371, 13, $2000+TGROUP_ELSE+TGROUP_SINGLE_SHOT, 132, $12E, >			; Trigger final camera sequence if all 3 ankhs have been placed, otherwise play sound track.
+				$5000+TGROUP_SINGLE_SHOT, 227, $2A, $5000+TGROUP_SINGLE_SHOT, 974, $529														; Set HORUS_STATUE as CAMERA_TARGET and shoot camera (if Global byte alfa 1 < 3)
+
+; Trigger sealed door camera sequence (end of ankh puzzle).
+TriggerGroup=  13, $2000+TGROUP_SINGLE_SHOT, 129, $14, $5000+TGROUP_SINGLE_SHOT, 990, $2D
+
+; Shoot lighting beam over Seth sealing door.
+TriggerGroup=  14, $2000+TGROUP_SINGLE_SHOT, 124, $3E03, $5000+TGROUP_SINGLE_SHOT, 999, $2B, $2000+TGROUP_SINGLE_SHOT, 11, $0, $2000+TGROUP_SINGLE_SHOT, 355, $1408, $5000+TGROUP_SINGLE_SHOT, 50, $2C, $5000+TGROUP_SINGLE_SHOT, 987, $2B
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;//////////////////// CUTSCENE 3 - SETH IS RELEASED ONCE MORE ////////////////////////////////////
+
+; CUTSCENE 3 - Organizer.
+Organizer=  2, FO_TICK_TIME, IGNORE, 1, 15, 40, 16, 2, 19, 1, 20, 60, 21, 120, 22, 3, 23, 300, 24, 100, 25, 130, 26, 360, 27, 30, 28, 10, 29, 170, 30, 1120, 34, 135, 35, 300, 36, 1305, 40, 64, 41, 7, 42, 40, 43, 67, 44, >
+270, 45, 60, 46
+; CUTSCENE 3 - Subtitle Organizer.
+
+; Trigger cutscene 3.
+TriggerGroup=  18, $2000+TGROUP_SINGLE_SHOT, 371, 17
+TriggerGroup=  17, $2000, 127, 2
+
+; Disable LARA control and FADE out screen.
+TriggerGroup=  15, $2000, 51, $0, $2000, 85, $10
+
+; Move LARA to designated LARA_START_POS and set Lara's hands free.
+TriggerGroup=  16, $2000, 79, 4, $2000, 107, $1, $2000, 407, $E, $2000, 408, $1
+
+; FADE IN screen and initialize cut-cam, set Lara Free hands.
+TriggerGroup=  19, $2000, 369, $4, $2000, 84, $16, $025000, 1025, $64, $025000, 1002, $65, $2000, 167, $A
+
+; Seq 1 - Slightly move camera to the left.
+Parameters=  PARAM_MOVE_ITEM, 1, IGNORE, 1025, DIR_EAST, 2048, 8, IGNORE, IGNORE, IGNORE
+TriggerGroup=  20, $2000, 167, 1
+
+; Seq 2 - Shoot to Lara's face, drawing weapons and empty holsters, then slightly pan camera backwards.
+Parameters=  PARAM_MOVE_ITEM, 2, IGNORE, 1030, DIR_WEST, 700, 700, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 3, IGNORE, 1030, DIR_SOUTH, 512, 512, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 4, IGNORE, 1030, DIR_NORTH, 1024, 3, IGNORE, IGNORE, IGNORE
+TriggerGroup=  21, $2000, 167, 2, $2000, 167, 3, >  ; Align CAMERA source.
+				$025000, 1030, $64, $025000, 1031, $65, $2000, 80, $BD, $2000, 407, $D, >
+				$2000, 167, 4, $5000, 1033, $2B, $2000, 167, 6, $5000, 1033, $1C0F
+
+; Seq 3 - Explode seth sealing door, shoot back Lara and play on-screen effects.
+TriggerGroup=  22, $2000, 355, $1408, $2000, 11, $0, $2000, 80, $BE, $5000, 1002, $10E, $5000, 988, $20F
+
+; Seq 4 - Shoot camera to sealing door, fly seth upwards and play dialogues, also move camera target upwards.
+Parameters=  PARAM_MOVE_ITEM, 5, IGNORE, 1033, DIR_UP, 3600, 40, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 6, IGNORE, 1033, DIR_DOWN, 2000, 2000, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 7, IGNORE, 1036, DIR_UP, 1900, 8, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 8, IGNORE, 1035, DIR_SOUTH, 1024, 2, IGNORE, IGNORE, IGNORE
+TriggerGroup=  23, $2000, 68, $118, >
+				$025000, 1035, $64, $025000, 1036, $65, >
+				$5000, 1033, $2B, $2000, 167, 5, $5000, 1033, $1C0F, >
+				$2000, 132, $12F, $022000, 102, 32, $022000, 103, $3, $022000, 104, 540, >
+				$2000, 167, 7, $2000, 167, 8, >
+				$2000, 80, $C1, $2000, 79, $5, >
+				$5000, 1040, $2B
+
+; Seq 5 - View Amulet of Horus on ground.
+Parameters=  PARAM_MOVE_ITEM, 9, IGNORE, 1042, DIR_EAST, 1024, 4, IGNORE, IGNORE, IGNORE
+TriggerGroup=  24, $025000, 1042, $64, $025000, 1043, $65, >
+				$5000, 1035, $2F, $5000, 1036, $2F, $5000, 1030, $2F, >
+				$2000, 167, 9
+
+; Seq 6 - Shoot to Lara's face, trigger picking up cutscene animation, and play dialogue (Not so fast!)
+Parameters=  PARAM_MOVE_ITEM, 10, IGNORE, 1044, DIR_SOUTH, 170, 170, IGNORE, IGNORE, IGNORE
+TriggerGroup=  25, $2000, 167, 10, >
+				$025000, 1044, $64, $025000, 1045, $65, >
+				$2000, 80, $C2, >
+				$2000, 132, $130, $022000, 102, 33, $022000, 103, $2, $022000, 104, 150, >
+				$2000, 79, $4, >
+				$5000, 1046, $2B, $5000, 1046, $1C0F, $5000, 1033, $10E, >   ; Activate new SETH actor.
+				$2000, 100, $1C0D
+
+; Seq 7 - Descend Seth to groud sequence and move Lara backwards one square, and remove Amulet pickup. Also, play Seth dialogue (piece of junk...)
+Parameters=  PARAM_MOVE_ITEM, 11, IGNORE, 1046, DIR_DOWN, 1800, 90, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 12, IGNORE, 1048, DIR_DOWN, 1800, 90, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 13, IGNORE, 1047, DIR_NORTH, 2048, 1, IGNORE, IGNORE, IGNORE
+TriggerGroup=  26, $5000, 1040, $10E, >
+				$025000, 1047, $64, $025000, 1048, $65, >
+				$5000, 1046, $1B0F, $2000, 167, 11, $2000, 167, 12, >
+				$2000, 132, $131, $022000, 102, 34, $022000, 103, $3, $022000, 104, 360, >
+				$2000, 80, $C3, $2000, 167, 13
+
+; Seq 8 - Add effect to Lara's Amulet hand mesh (Left hand) and play electrical failure sound.
+AddEffect=  1, ADD_LIGHT_GLOVE, FADD_CONTINUE_EMIT+FADD_IGNORE_STATUS+FADD_NO_SOUND, JOINT_LEFT_WRIST, 0, 0, 120, IGNORE, IGNORE
+TriggerGroup=  27, $2000, 80, $C4, $5000, 0, $130, $2000, 70, $1FFD
+
+; Remove effect and play another electrical failure sound.
+TriggerGroup=  28, $5000, 0, $131, $2000, 70, $1FFD
+
+; Seth mocks Lara (Ha-ha, out of juice).
+TriggerGroup=  29, $2000, 132, $132, $022000, 102, 40, $022000, 103, $3, $022000, 104, 180
+
+; Seth starts threatening.
+Parameters=  PARAM_MOVE_ITEM, 14, IGNORE, 1050, DIR_UP, 2048, 1, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_MOVE_ITEM, 15, IGNORE, 1050, DIR_WEST, 2048, 1, IGNORE, IGNORE, IGNORE
+TriggerGroup=  30, $025000, 1050, $64, $025000, 1048, $65, >
+				$2000, 167, 14, $2000, 167, 15, >
+				$2000, 127, 3, $2000, 80, $C3
+Organizer=  3, FO_TICK_TIME, IGNORE, 1, 31, 441, 32, 531, 33
+TriggerGroup=  31, $2000, 132, $133, $022000, 102, 35, $022000, 103, $3, $022000, 104, 441
+TriggerGroup=  32, $022000, 102, 36, $022000, 103, $3, $022000, 104, 531
+TriggerGroup=  33, $022000, 102, 37, $022000, 103, $3, $022000, 104, 300
+
+; Lara refuses Seth's help.
+TriggerGroup=  34, $2000, 132, $134, $2000, 80, $C5, >
+				$022000, 102, 38, $022000, 103, $2, $022000, 104, 135
+
+; Seth says Lara may try.
+TriggerGroup=  35, $2000, 132, $135, >
+				$022000, 102, 39, $022000, 103, $3, $022000, 104, 240
+
+; Seth lectures Lara.
+Parameters=  PARAM_MOVE_ITEM, 16, IGNORE, 1052, DIR_SOUTH, 4096, 2, IGNORE, IGNORE, IGNORE
+TriggerGroup=  36, $2000, 132, $137, >
+				$025000, 1052, $64, $025000, 1048, $65, >
+				$2000, 127, 4, >
+				$2000, 167, 16
+Organizer=  4, FO_TICK_TIME, IGNORE, 1, 37, 450, 38, 450, 39
+TriggerGroup=  37, $022000, 102, 41, $022000, 103, $3, $022000, 104, 450
+TriggerGroup=  38, $022000, 102, 42, $022000, 103, $3, $022000, 104, 450
+TriggerGroup=  39, $022000, 102, 43, $022000, 103, $3, $022000, 104, 460 ; (real: 405)
+
+; Make Seth fly upwards.
+Parameters=  PARAM_MOVE_ITEM, 17, IGNORE, 1048, DIR_UP, 1800, 45, IGNORE, IGNORE, IGNORE
+TriggerGroup=  40, $5000, 1046, $40F, >
+				$2000, 167, 17
+
+; Flash screen and play Lara's injury blast animation.
+TriggerGroup=  41, $2000, 1, $0, $2000, 11, $0, $2000, 355, $1E08, >
+				$2000, 80, $C6
+
+; Shoot back to Lara and remove Seth actor from map.
+TriggerGroup=  42, $025000, 1053, $64, $025000, 1031, $65, >
+				$5000, 1046, $10E
+		
+; Play Lara's dialogue and shoot the other side direction (Damn it...).
+Parameters=  PARAM_MOVE_ITEM, 18, IGNORE, 1055, DIR_DOWN, 2048, 2, IGNORE, IGNORE, IGNORE
+TriggerGroup=  43, $2000, 132, $138, $025000, 1054, $64, $025000, 1055, $65, >
+				$022000, 102, 44, $022000, 103, $3, $022000, 104, 60, >
+				$2000, 167, 18
+
+; Play Lara's final dialogue (Hmph... unbalancing...)
+TriggerGroup=  44, $2000, 132, $139, >
+				$022000, 102, 45, $022000, 103, $3, $022000, 104, 240
+
+; FADE OUT Screen.
+TriggerGroup=  45, $2000, 85, $10
+
+; Enable LARA Control, open curtain, restore animation and Lara-cam, also restore Lara meshes and restore correct actor positions. Give Lara Amulet of Horus Quest item.
+TriggerGroup=  46, $022000, 105, $0, $2000, 84, $16, $2000, 52, $0, $2000, 77, $B, $2000, 369, $0, >
+				$2000, 100, $80D, $2000, 100, $80A, $2000, 407, $E, $2000, 408, $1, >
+				$2000, 79, $6, >
+				$5000, 987, $1A, >
+				$2000, 48, $14C, >
+				$5000, 1072, $11A ; Open SECRET - 1 Door.
+
+;/////////////////////////////////////////////////////////////////////////////////////////////////
+
+LoadCamera=  0, 0, 0, 0, 0, 0, 0
+Level=	DATA\HORUS, 107
+
+[Level]
+Name=		End Credits
+WindowTitle=  The Lost Secret II - Fenrir's Legacy (v 0.1.0.0)
+Horizon=   DISABLED
+
+Cutscene=	ENABLED
+
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! END CREDITS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ;
+
+#DEFINE WAIT_TIME_VERY_LONG 400 ; (about 14 seconds)
+#DEFINE WAIT_TIME_LONG 210  ; (7 seconds)
+#DEFINE WAIT_TIME_NORMAL 150  ; (5 seconds)
+#DEFINE WAIT_TIME_FADE 15
+
+; Credits Organizer 1.
+Organizer=  1, FO_TICK_TIME + FO_ENABLED, IGNORE, 1, 3, WAIT_TIME_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 4, WAIT_TIME_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 5, WAIT_TIME_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 6, WAIT_TIME_NORMAL, 2, WAIT_TIME_FADE, 1, >
+										1, 7, WAIT_TIME_NORMAL, 2, WAIT_TIME_FADE, 1, >
+										1, 8, WAIT_TIME_NORMAL, 2, WAIT_TIME_FADE, 1, >
+										1, 9, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 10, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 11, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 12, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 13, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 14, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 15, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 16, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 17, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 18, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 19, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 20, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 21, WAIT_TIME_VERY_LONG, 2, WAIT_TIME_FADE, 1, >
+										1, 22
+
+; Normal Text Formats
+Parameters=  PARAM_PRINT_TEXT, 1, CL_WHITE, FT_CENTER_CENTER, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_PRINT_TEXT, 5, CL_WHITE, FT_TOP_CENTER, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Title Text Formats
+Parameters=  PARAM_PRINT_TEXT, 2, CL_YELLOW, FT_CENTER_CENTER, IGNORE, IGNORE, IGNORE, IGNORE
+Parameters=  PARAM_PRINT_TEXT, 4, CL_YELLOW, FT_TOP_CENTER, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Special Text Formats
+Parameters=  PARAM_PRINT_TEXT, 3, CL_GOLD, FT_CENTER_CENTER, IGNORE, IGNORE, IGNORE, IGNORE
+
+; Remove all texts from screen.
+TriggerGroup=  1, $2000, 67, $0
+
+; Fade out-in screen for next text preparation.
+TriggerGroup=  2, $2000, 85, $110
+
+; CREDIT - FOR MY BELOVED PARENTS.
+TriggerGroup=  3, $2000, 203, $130
+
+; CREDIT - THE LOST SECRET: FENRIR'S LEGACY (CHAPTER 1)
+TriggerGroup=  4, $2000, 203, $131
+
+; CREDIT - Made with TRNG.
+TriggerGroup=  5, $2000, 203, $332
+
+; CREDITS - Voice Talents
+TriggerGroup=  6, $2000, 203, $233
+
+; CREDITS - Sara Bazmandeh as Lara Croft.
+TriggerGroup=  7, $2000, 203, $134
+
+; CREDITS - Ramtin Mojibi as Seth.
+TriggerGroup=  8, $2000, 203, $135
+
+; CREDITS - Object Designers (1)
+TriggerGroup=  9, $2000, 203, $436, $2000, 203, $537
+
+; CREDITS - Object Designers (2)
+TriggerGroup=  10, $2000, 203, $438, $2000, 203, $539
+
+; CREDITS - Outfit Designers
+TriggerGroup=  11, $2000, 203, $43A, $2000, 203, $13B
+
+; CREDITS - Textures
+TriggerGroup=  12, $2000, 203, $43C, $2000, 203, $53D
+
+; CREDITS - Cutscenes.
+TriggerGroup=  13, $2000, 203, $43E, $2000, 203, $13F
+
+; CREDITS - Soundtracks.
+TriggerGroup=  14, $2000, 203, $440, $2000, 203, $541
+
+; CREDITS - Animators.
+TriggerGroup=  15, $2000, 203, $442, $2000, 203, $543
+
+; CREDITS - Engine Programmers (Vanilla TR4).
+TriggerGroup=  16, $2000, 203, $444, $2000, 203, $545
+
+; CREDITS - Engine Programmers (TRNG).
+TriggerGroup=  17, $2000, 203, $446, $2000, 203, $147
+
+; CREDITS - Engine Customizations (TLSFL).
+TriggerGroup=  18, $2000, 203, $448, $2000, 203, $149
+
+; CREDITS - Beta Testers.
+TriggerGroup=  19, $2000, 203, $44D, $2000, 203, $14E
+
+; CREDITS - Special Thanks.
+TriggerGroup=  20, $2000, 203, $44A, $2000, 203, $14B
+
+; CREDITS - Thank you for playing.
+TriggerGroup=  21, $2000, 203, $14C
+
+; Jump to EXTRAS LEVEL (Or title level).
+TriggerGroup=  22, $2000, 82, $7F
+
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ;
+
+LoadCamera=  0, 0, 0, 0, 0, 0, 0
+Level=		DATA\HUBA, 104
+
+
+
+
