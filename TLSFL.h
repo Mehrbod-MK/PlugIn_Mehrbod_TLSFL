@@ -26,7 +26,9 @@
 #include "Tomb4Discoveries_mine.h" // here type tomb4 procedures you discovered
 #include "structures_mine.h" // here you type your structure definitions
 
-#include "trng.h" // list of trng functions imported from trng.cpp source. 
+#include "trng.h" // list of trng functions imported from trng.cpp source.
+
+#include <iostream>
 
 #pragma warning( error : 4706 )
 #pragma warning(disable: 4996)
@@ -40,6 +42,8 @@ namespace Mehrbod
 		public:
 			static void FlipEffect_Puzzles_MovingPlaques_Initialize();
 			static void FlipEffect_Puzzles_MovingPlaques_Poll();
+			static void Poll_CutsceneCamera();
+			static void Draw_Cutscene_Subtitles();
 		private:
 		};
 
@@ -49,6 +53,16 @@ namespace Mehrbod
 			static void PlaySFXAtPosition(int, StrTriplePoint);
 			static void PlaySFXAtPosition(int, DWORD, int, DWORD);
 			static bool IsLaraInRoomNumber(int);
+		};
+
+		class Fields
+		{
+		public:
+			static bool IsCutCamMode;
+			static int CutCamSourceMoveableIndex;
+			static int CutCamTargetMoveableIndex;
+			static char* SubtitleText;
+			static int SubtitleTextColor;
 		};
 
 		class Level_Constants

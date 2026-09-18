@@ -57,10 +57,13 @@ char TexMyPluginName[80];
 // to save and restore in savegames, in "StrSavegameGlobalData" or "StrSavegameLocalData" structures
 StrMyData MyData;
 
+// ************  TLSFL section  ****************
 
-// ************  Utilities section  ****************
-
-
+bool Mehrbod::TLSFL::Fields::IsCutCamMode = false;
+int Mehrbod::TLSFL::Fields::CutCamSourceMoveableIndex = -1;
+int Mehrbod::TLSFL::Fields::CutCamTargetMoveableIndex = -1;
+char* Mehrbod::TLSFL::Fields::SubtitleText = nullptr;
+int Mehrbod::TLSFL::Fields::SubtitleTextColor = -1;
 
 // ************  Patcher Functions section  ***************
 // Note: please, don't change or remove the C++ procedure you find here,
@@ -143,7 +146,7 @@ void cbInitLevel(void)
 	// here you can initialize specific items of currnet level.
 	// it will be called only once for level, when all items has been already initialized
 	// and just a moment before entering in main game cycle.
-
+	Mehrbod::TLSFL::Fields::SubtitleText = nullptr;
 }
 
 // called everytime player save the game (but also when lara move from a level to another HUB saving). 
@@ -380,7 +383,7 @@ int cbFlipEffectMine(WORD FlipIndex, WORD Timer, WORD Extra, WORD ActivationMode
 		// 101: Puzzle. Moving Plaques. Start moving downwards for (&) plaque.
 	case 101:
 	{
-		MovingPlaque* plaqueNow = &MyData.Save.Global.MovingPlaques[Timer];
+		/*MovingPlaque* plaqueNow = &MyData.Save.Global.MovingPlaques[Timer];
 		switch (plaqueNow->State)
 		{
 		case MovingPlaqueStates::None:
@@ -392,8 +395,28 @@ int cbFlipEffectMine(WORD FlipIndex, WORD Timer, WORD Extra, WORD ActivationMode
 			plaqueNow->TimerValue = Mehrbod::TLSFL::Level_Constants::LEVEL1_Puzzle2_MovingPlaques_WaitFramesTimer;
 			break;
 		}
-		break;
+		break;*/
 	}
+
+		// 102: Cutscene. Subtitle. Set NG string subtitle to (&).
+	case 102:
+		Mehrbod::TLSFL::Fields::SubtitleText = GetString(TimerFull | STRING_NG);
+		break;
+
+		// 103: Cutscene. Subtitle. Set text color to (&).
+	case 103:
+		Mehrbod::TLSFL::Fields::SubtitleTextColor = TimerFull;
+		break;
+
+		// 104: Cutscene. Subtitle. Set text display duration to (&) frames and begin draw.
+	case 104:
+		MyData.Save.Local.SubtitlesTimer = TimerFull;
+		break;
+
+		// 105: Cutscene. End cutscene camera and restore camera back to Lara-followup.
+	case 105:
+		Mehrbod::TLSFL::Fields::IsCutCamMode = false;
+		break;
 
 	case -1: 
 		break;
@@ -417,6 +440,18 @@ int cbActionMine(WORD ActionIndex, int ItemIndex, WORD Extra, WORD ActivationMod
 	switch (ActionIndex) {
 		// type here the code per your action trigger.
 		// add "case Number:" and complete the code with "break;" instruction
+
+		// 100: Cutscene. Initialize cutscene camera with <#> moveable as its source.
+	case 100:
+		Mehrbod::TLSFL::Fields::CutCamSourceMoveableIndex = ItemIndex;
+		break;
+
+		// 101: Cutscene. Set <#> moveable as cutscene camera's shooting target.
+	case 101:
+		Mehrbod::TLSFL::Fields::CutCamTargetMoveableIndex = ItemIndex;
+		Mehrbod::TLSFL::Fields::IsCutCamMode = true;
+		break;
+
 	case -1:
 		// note: remove this "case -1:" and its "break;" it has been added only to avoid warning messages about empty switch
 		break;
@@ -559,6 +594,7 @@ void cbParametersMine(WORD ParameterValue, int NumberOfItems, short *pItemArray)
 void cbCycleBegin(void)
 {
 	Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll();
+	Mehrbod::TLSFL::Functions::Poll_CutsceneCamera();
 }
 
 // Not yet linked! To link it add to RequireMyCallBacks() function the row:
@@ -614,6 +650,8 @@ int cbLaraDraw(WORD CBT_Flags, StrItemTr4* pLara, bool TestNoUpdateLight, bool T
 	RECT rect = { 50, 50 };
 	ConvertMicroUnits(&rect);
 	PrintText(rect.left, rect.top, msg, 0, enumFC.WHITE, enumFTS.ALIGN_LEFT);
+
+	Mehrbod::TLSFL::Functions::Draw_Cutscene_Subtitles();
 
 	return enumSRET.OK;
 }
@@ -728,7 +766,7 @@ void Mehrbod::TLSFL::TLSFL_Functions::Parameter_PlayLoopedSFX_Animating()
 
 void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize()
 {
-	int numPlaques = sizeof(MyData.Save.Global.MovingPlaques) / sizeof(MyData.Save.Global.MovingPlaques[0]);
+	/*int numPlaques = sizeof(MyData.Save.Global.MovingPlaques) / sizeof(MyData.Save.Global.MovingPlaques[0]);
 	for (int i = 0; i < numPlaques; i++)
 	{
 		MovingPlaque* plauqeNow = &MyData.Save.Global.MovingPlaques[i];
@@ -747,12 +785,12 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Initialize()
 		}
 		plauqeNow->MoveValue = 0;
 		plauqeNow->ProgressStep = 0;
-	}
+	}*/
 }
 
 void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 {
-	int numPlaques = sizeof(MyData.Save.Global.MovingPlaques) / sizeof(MyData.Save.Global.MovingPlaques[0]);
+	/*int numPlaques = sizeof(MyData.Save.Global.MovingPlaques) / sizeof(MyData.Save.Global.MovingPlaques[0]);
 	for (int i = 0; i < numPlaques; i++)
 	{
 		MovingPlaque* plaqueNow = &MyData.Save.Global.MovingPlaques[i];
@@ -764,7 +802,6 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 		case MovingPlaqueStates::None:
 			break;
 		case MovingPlaqueStates::MovingDown:
-			sprintf(msg, "Plaque Index:  %d", plaqueNow->PlaqueMoveableIndices[1]);
 			if (plaqueNow->TimerValue > 0 && plaqueNow->ProgressStep < 680)
 			{
 				for (int j = 0; j < numClockwiseCogs; j++)
@@ -876,7 +913,7 @@ void Mehrbod::TLSFL::Functions::FlipEffect_Puzzles_MovingPlaques_Poll()
 			}
 			break;
 		}
-	}
+	}*/
 }
 
 void Mehrbod::TLSFL::Helpers::PlaySFXAtPosition(int sfxId, StrTriplePoint position)
@@ -894,5 +931,33 @@ bool Mehrbod::TLSFL::Helpers::IsLaraInRoomNumber(int roomIndex)
 {
 	Get(enumGET.LARA, NULL, NULL);
 	return GET.pLara->Room == roomIndex;
+}
+
+void Mehrbod::TLSFL::Functions::Poll_CutsceneCamera()
+{
+	if (Fields::IsCutCamMode && Get(enumGET.ITEM, Fields::CutCamSourceMoveableIndex, IGNORE))
+	{
+		Trng.pGlobTomb4->pAdr->Camera.pCameraSrc->Room = GET.pItem->Room;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraSrc->CordX = GET.pItem->CordX;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraSrc->CordY = GET.pItem->CordY;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraSrc->CordZ = GET.pItem->CordZ;
+	}
+	if (Fields::IsCutCamMode && Get(enumGET.ITEM, Fields::CutCamTargetMoveableIndex, IGNORE))
+	{
+		Trng.pGlobTomb4->pAdr->Camera.pCameraTarget->Room = GET.pItem->Room;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraTarget->CordX = GET.pItem->CordX;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraTarget->CordY = GET.pItem->CordY;
+		Trng.pGlobTomb4->pAdr->Camera.pCameraTarget->CordZ = GET.pItem->CordZ;
+	}
+}
+
+void Mehrbod::TLSFL::Functions::Draw_Cutscene_Subtitles()
+{
+	if (MyData.Save.Local.SubtitlesTimer < 0 || Fields::SubtitleText == nullptr)
+		return;
+	MyData.Save.Local.SubtitlesTimer--;
+	RECT rect = { 500, 700, 0, 0 };
+	ConvertMicroUnits(&rect);
+	PrintText(rect.left, rect.top, Fields::SubtitleText, enumFT.HALF_SIZEX | enumFT.HALF_SIZEY, Fields::SubtitleTextColor, enumFTS.ALIGN_CENTER);
 }
 

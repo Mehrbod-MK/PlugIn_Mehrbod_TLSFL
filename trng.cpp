@@ -3251,6 +3251,12 @@ void AddNGToken(WORD NGTag, DWORD TotItem,
 		
 		NumeroWords = 2 + (TotBytes/2);
 
+		// TODO: MMK Remove.
+		/*char msg[100];
+		ZeroMemory(&msg[0], 100 * sizeof(char));
+		sprintf(&msg[0], "Struct size:  %d", TotBytes);
+		MessageBox(NULL, &msg[0], "", MB_OK);*/
+
 		if (TotBytes & 1) {
 			SendToLog("ERROR: in AddNGToken(): Size of structure for Tag=0x%X is not even (%d)",
 				NGTag, TotBytes);

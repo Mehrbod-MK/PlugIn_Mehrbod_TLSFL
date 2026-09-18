@@ -4,28 +4,6 @@
 // TYPE_HERE: here you can type your structure definitions like it has been done
 // in the "structures.h" file for trng dll
 
-typedef enum MovingPlaqueStates
-{
-	None = 0x0000,
-
-	MovingDown,
-	WaitingForNextTrigger,
-	MovingUp,
-	FinalStop
-} MovingPlaqueState;
-
-typedef struct MovingPlaque
-{
-	WORD State;
-	int ClockwiseCogs[2];
-	int CounterClockwiseCogs[2];
-	int PlaqueMoveableIndices[2];
-	int MoveValue;
-	int TimerValue;
-	int ProgressStep;
-	int LaraDeathRoomIndex;
-} MovingPlaque;
-
 // --------------- PRESET STRUCTURE ZONE -----------------------------
 // Please, don't remove structures and fields you find in this "PRESET ZONE". They will be used by some
 // preset functions of your plugin sources
@@ -38,14 +16,17 @@ typedef struct StrSavegameGlobalData {
 	//       with another BYTE vairable or placefolder)
 
 	// Puzzles. Moving Plaques.
-	MovingPlaque MovingPlaques[4];
+	// MovingPlaque MovingPlaques[4];
+	long _DUMMY_PADDING;
 }SavegameGlobalDataFields;
 
 typedef struct StrSavegameLocalData {
 	// FOR_YOU:
 	// define here your variables that you wish were saved (and then restored) to/from savegame in LOCAL section (one for each different level)
 	// note: the size of this structure should be always even (if you add BYTE variable, compensate it with another BYTE vairable or placefolder)
-
+	long _DUMMY_PADDING;
+	
+	int SubtitlesTimer;
 }SavegameLocalDataFields;
 
 
