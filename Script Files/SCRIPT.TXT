@@ -1,7 +1,7 @@
 ;**************************************
 ;
-; Tomb Raider IV Script File
-; Release Version 1.00
+; The Lost Secret II - Fenrir's Legacy Script File
+; Release Version 0.1.0.0 (September 2026)
 ;
 ;**************************************
 
